@@ -1,24 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Categories } from "@/components/souq/Categories";
+import { Footer } from "@/components/souq/Footer";
+import { Hero } from "@/components/souq/Hero";
+import { Navbar } from "@/components/souq/Navbar";
+import { Newsletter } from "@/components/souq/Newsletter";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "سوق بايت — عالمك التقني والأنمي في مكان واحد" },
+      {
+        name: "description",
+        content:
+          "سوق بايت: منصة عربية تجمع متجر الأوتاكو، خدمات الصيانة عن بُعد، دليل أنظمة التشغيل، أدوات الذكاء الاصطناعي، الألعاب والأنمي.",
+      },
+      { property: "og:title", content: "سوق بايت — عالمك التقني والأنمي في مكان واحد" },
+      {
+        property: "og:description",
+        content:
+          "متجر أوتاكو، خدمات تقنية، أنظمة تشغيل، أدوات AI، ألعاب وأنمي — منصة عربية واحدة.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div dir="rtl" lang="ar" className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <Categories />
+        <Newsletter />
+      </main>
+      <Footer />
     </div>
   );
 }
