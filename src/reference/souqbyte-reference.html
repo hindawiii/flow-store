@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C75B12">
+<meta name="description" content="سوق بايت — منصتك العربية الشاملة للتقنية والأنمي">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiU291cUJ5dGUiLCJzaG9ydF9uYW1lIjoiU291cUJ5dGUiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzFBMUExRSIsInRoZW1lX2NvbG9yIjoiI0M3NUIxMiJ9">
+<title>سوق بايت — SouqByte | عالمك التقني في مكان واحد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#C75B12',
+        secondary: '#1A1A2E',
+        accent: '#E94560',
+        success: '#0F9B6E',
+        warning: '#F4A261',
+        text: '#F1F1F1',
+        muted: '#8D8DAA',
+        surface: '#16213E',
+        border: '#2D2D44',
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --bg: #1A1A2E;
+    --surface: #16213E;
+    --text: #F1F1F1;
+    --muted: #8D8DAA;
+    --border: #2D2D44;
+    --primary: #C75B12;
+    --accent: #E94560;
+    --success: #0F9B6E;
+    --warning: #F4A261;
+  }
+  [data-theme="light"] {
+    --bg: #F8F9FA;
+    --surface: #FFFFFF;
+    --text: #1A1A2E;
+    --muted: #6C757D;
+    --border: #DEE2E6;
+    --primary: #C75B12;
+    --accent: #E94560;
+    --success: #0F9B6E;
+    --warning: #F4A261;
+  }
+  * { font-family: 'Tajawal', sans-serif; }
+  body { background: var(--bg); color: var(--text); overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+  .circuit-pattern { background-image: radial-gradient(circle at 2px 2px, rgba(199,91,18,0.05) 1px, transparent 0); background-size: 40px 40px; }
+  [data-theme="light"] .circuit-pattern { background-image: radial-gradient(circle at 2px 2px, rgba(199,91,18,0.03) 1px, transparent 0); }
+  .card-hover { transition: all 0.2s ease-in-out; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(199, 91, 18, 0.12); }
+  .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .btn-primary { background: var(--primary); color: white; border-radius: 8px; padding: 12px 24px; font-weight: 700; transition: all 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: #a84a0e; box-shadow: 0 4px 20px rgba(199,91,18,0.3); }
+  .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 12px 24px; font-weight: 700; transition: all 0.2s; cursor: pointer; }
+  .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--primary); border-radius: 8px; padding: 12px 24px; font-weight: 700; transition: all 0.2s; cursor: pointer; }
+  .btn-outline:hover { background: var(--primary); color: white; }
+  .badge { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+  .badge-primary { background: rgba(199,91,18,0.2); color: var(--primary); }
+  .badge-accent { background: rgba(233,69,96,0.2); color: var(--accent); }
+  .badge-success { background: rgba(15,155,110,0.2); color: var(--success); }
+  .badge-warning { background: rgba(244,162,97,0.2); color: var(--warning); }
+  .badge-muted { background: rgba(141,141,170,0.2); color: var(--muted); }
+  .product-card, .service-card, .os-card, .tool-card, .game-card, .anime-card, .news-card, .freelance-card, .community-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s;
+  }
+  .product-card:hover, .service-card:hover, .os-card:hover, .tool-card:hover, .game-card:hover, .anime-card:hover, .news-card:hover, .freelance-card:hover, .community-card:hover {
+    transform: translateY(-4px); box-shadow: 0 8px 30px rgba(199, 91, 18, 0.12);
+  }
+  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); width: 100%; outline: none; transition: all 0.2s; }
+  input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(199,91,18,0.2); }
+  .mobile-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .mobile-drawer.open { transform: translateX(0); }
+  .cart-sidebar { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .cart-sidebar.open { transform: translateX(0); }
+  .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-content { transform: scale(0.95); transition: transform 0.2s; }
+  .modal-overlay.active .modal-content { transform: scale(1); }
+  .toast { transform: translateY(-100%); transition: transform 0.4s; position: fixed; top: 20px; left: 20px; z-index: 100; }
+  .toast.show { transform: translateY(0); }
+  .tab-btn { padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.2s; }
+  .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+  .compare-bar { transform: translateY(100%); transition: transform 0.3s; }
+  .compare-bar.open { transform: translateY(0); }
+  .search-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+  .search-dropdown.open { max-height: 400px; }
+  .notification-dot { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .detail-section { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+  .detail-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { color: var(--muted); }
+  .detail-value { font-weight: 600; }
+  .review-item { padding: 1rem; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 0.5rem; background: var(--surface); }
+  .review-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+  .review-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: white; }
+  .review-stars { color: var(--warning); font-size: 12px; }
+  .review-text { font-size: 0.875rem; color: var(--muted); }
+  .price-tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
+  .warning-box { background: rgba(233,69,96,0.1); border: 1px solid rgba(233,69,96,0.3); border-radius: 8px; padding: 12px; color: var(--accent); font-size: 14px; }
+  .lang-en { font-family: 'Space Grotesk', sans-serif; direction: ltr; text-align: left; }
+  [dir="ltr"] .lang-en { text-align: left; }
+  .notification-panel { transform: translateX(100%); transition: transform 0.3s; }
+  .notification-panel.open { transform: translateX(0); }
+  .community-post { padding: 1rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 1rem; background: var(--surface); }
+  .community-post:hover { border-color: var(--primary); }
+  .comment-box { padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); margin-top: 0.5rem; font-size: 0.875rem; }
+  @media (max-width: 768px) {
+    .modal-overlay .modal-content { margin: 0.5rem; max-height: 95vh; overflow-y: auto; }
+    .detail-section { padding: 0.75rem; }
+  }
+</style>
+</head>
+<body class="circuit-pattern" data-theme="dark">
+
+<!-- ==================== SUPABASE SCHEMA COMMENTS ====================
+-- جدول المنتجات (products)
+-- id, name, price, old_price, image, category, badge, rating, reviews,
+-- manufacturer, country, product_type, classification, available_arab,
+-- official_website, social_links (JSONB), price_comparison (JSONB),
+-- description, trusted_sources (JSONB), user_reviews (JSONB)
+
+-- جدول أنظمة التشغيل (os_guides)
+-- id, name, developer, free, ram, storage, image, category,
+-- system_requirements (JSONB), alternative_methods (JSONB),
+-- essential_requirements (text[]), official_website,
+-- download_links (JSONB), installation_guide (JSONB),
+-- common_errors (JSONB), developer_info (JSONB),
+-- versions (JSONB), free_courses (JSONB), specialties (text[]),
+-- user_reviews (JSONB)
+
+-- جدول الألعاب (games)
+-- id, name, platform, price, free, image, genre,
+-- official_website, store_links (JSONB), versions (JSONB),
+-- system_requirements (JSONB), developer, publisher,
+-- reviews (JSONB), release_date, description, user_reviews (JSONB)
+
+-- جدول الأنمي (anime)
+-- id, title, studio, episodes, image, genre,
+-- streaming_sites (JSONB), official_sites (JSONB),
+-- social_media (JSONB), description, rating, release_year
+
+-- جدول الإشعارات (notifications)
+-- id, title, message, type, read, created_at, user_id
+
+-- جدول المراجعات (reviews)
+-- id, product_id, user_id, rating, text, type, created_at
+
+-- جدول المقارنات (comparisons)
+-- id, user_id, items (JSONB), created_at
+
+-- جدول المجتمع (community_posts)
+-- id, user_id, title, content, category, likes, comments (JSONB), created_at
+-- ==================== END SCHEMA ==================== -->
+
+<!-- Navbar -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="height:72px;">
+  <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center relative" style="border-color:var(--primary)">
+        <div class="w-2 h-2 rounded-full absolute" style="background:var(--primary)"></div>
+        <div class="w-8 h-8 rounded-full border absolute" style="border-color:var(--primary);clip-path:polygon(0 0,100% 0,100% 60%,0 60%);opacity:0.3"></div>
+      </div>
+      <div>
+        <span class="text-xl font-bold" style="color:var(--text)">سوق بايت</span>
+        <span class="text-xs block -mt-1" style="font-family:'Space Grotesk',sans-serif;letter-spacing:0.1em;color:var(--muted)">SOQBYTE</span>
+      </div>
+    </div>
+    <div class="hidden lg:flex items-center gap-6">
+      <a href="#store" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">المتجر</a>
+      <a href="#services" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">الخدمات</a>
+      <a href="#os" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">أنظمة التشغيل</a>
+      <a href="#ai" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">أدوات AI</a>
+      <a href="#games" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">الألعاب</a>
+      <a href="#anime" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">الأنمي</a>
+      <a href="#community" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">المجتمع</a>
+      <a href="#freelance" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">العمل الحر</a>
+      <a href="#news" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">الأخبار</a>
+      <a href="#support" class="transition-colors text-sm font-medium" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">الدعم</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="relative hidden md:block">
+        <input type="text" id="global-search" placeholder="بحث في كل الأقسام..." oninput="handleSearch(this.value)" style="width:200px;padding:8px 12px;padding-right:36px;font-size:13px;">
+        <i class="fas fa-search absolute right-3 top-1/2 -translate-y-1/2" style="color:var(--muted)"></i>
+        <div id="search-dropdown" class="search-dropdown absolute top-full right-0 mt-2 w-80 rounded-xl border shadow-xl z-50" style="background:var(--surface);border-color:var(--border)"></div>
+      </div>
+      <button onclick="toggleTheme()" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="border:1px solid var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+        <i id="theme-icon" class="fas fa-sun"></i>
+      </button>
+      <button onclick="toggleLanguage()" class="w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold transition-all" style="border:1px solid var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+        EN
+      </button>
+      <button onclick="toggleNotifications()" class="relative w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="border:1px solid var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+        <i class="fas fa-bell"></i>
+        <span id="notif-badge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold hidden" style="background:var(--accent);color:white">3</span>
+      </button>
+      <button onclick="toggleCart()" class="relative transition-all" style="color:var(--text)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">
+        <i class="fas fa-shopping-cart text-lg"></i>
+        <span id="cart-count" class="absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background:var(--accent);color:white">0</span>
+      </button>
+      <button onclick="openLoginModal()" class="hidden md:block btn-primary text-sm py-2 px-4">تسجيل الدخول</button>
+      <button onclick="toggleMobileMenu()" class="lg:hidden text-xl" style="color:var(--text)"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="mobile-drawer" class="mobile-drawer fixed inset-y-0 right-0 w-72 z-50 border-l p-6" style="background:var(--secondary);border-color:var(--border)">
+  <div class="flex justify-between items-center mb-8">
+    <span class="text-xl font-bold" style="color:var(--text)">القائمة</span>
+    <button onclick="toggleMobileMenu()" style="color:var(--text)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><i class="fas fa-times text-xl"></i></button>
+  </div>
+  <div class="flex flex-col gap-4">
+    <a href="#store" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">المتجر</a>
+    <a href="#services" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">الخدمات</a>
+    <a href="#os" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">أنظمة التشغيل</a>
+    <a href="#ai" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">أدوات AI</a>
+    <a href="#games" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">الألعاب</a>
+    <a href="#anime" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">الأنمي</a>
+    <a href="#community" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">المجتمع</a>
+    <a href="#freelance" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">العمل الحر</a>
+    <a href="#news" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">الأخبار</a>
+    <a href="#support" onclick="toggleMobileMenu()" class="py-2 border-b text-sm font-medium" style="color:var(--text);border-color:var(--border)">الدعم</a>
+    <button onclick="openLoginModal(); toggleMobileMenu();" class="btn-primary mt-4">تسجيل الدخول</button>
+  </div>
+</div>
+
+<!-- Notifications Panel -->
+<div id="notification-overlay" onclick="toggleNotifications()" class="fixed inset-0 bg-black/60 z-50 hidden"></div>
+<div id="notification-panel" class="notification-panel fixed top-0 right-0 bottom-0 w-full max-w-sm z-50 border-l flex flex-col" style="background:var(--secondary);border-color:var(--border)">
+  <div class="p-6 border-b flex items-center justify-between" style="border-color:var(--border)">
+    <h2 class="text-xl font-bold" style="color:var(--text)">الإشعارات <span id="notif-count" class="text-sm" style="color:var(--muted)">(3)</span></h2>
+    <button onclick="toggleNotifications()" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times text-xl"></i></button>
+  </div>
+  <div id="notifications-list" class="flex-1 overflow-y-auto p-4"></div>
+</div>
+
+<!-- Cart Overlay & Sidebar -->
+<div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-50 hidden"></div>
+<div id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 bottom-0 w-full max-w-md z-50 border-l flex flex-col" style="background:var(--secondary);border-color:var(--border)">
+  <div class="p-6 border-b flex items-center justify-between" style="border-color:var(--border)">
+    <h2 class="text-xl font-bold" style="color:var(--text)">سلة التسوق <span id="cart-title-count" class="text-sm" style="color:var(--muted)">(0)</span></h2>
+    <button onclick="toggleCart()" style="color:var(--text)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><i class="fas fa-times text-xl"></i></button>
+  </div>
+  <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+    <div class="text-center py-12">
+      <i class="fas fa-shopping-cart text-6xl mb-4" style="color:var(--border)"></i>
+      <p style="color:var(--muted)">سلة التسوق فارغة</p>
+      <button onclick="toggleCart(); scrollToSection('store');" class="btn-primary mt-4">تصفح المتجر</button>
+    </div>
+  </div>
+  <div id="cart-footer" class="p-6 border-t hidden" style="border-color:var(--border)">
+    <div class="flex justify-between mb-2"><span style="color:var(--muted)">المجموع الفرعي</span><span id="cart-subtotal" class="font-bold">$0</span></div>
+    <div class="flex justify-between mb-4"><span style="color:var(--muted)">الإجمالي</span><span id="cart-total" class="font-bold text-xl" style="color:var(--primary)">$0</span></div>
+    <button onclick="showToast('سيتم توجيهك لصفحة الدفع قريباً', 'info')" class="btn-primary w-full">إتمام الشراء</button>
+  </div>
+</div>
+
+<!-- Compare Bar -->
+<div id="compare-bar" class="compare-bar fixed bottom-0 left-0 right-0 z-40 border-t p-4" style="background:var(--secondary);border-color:var(--border)">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <span class="font-bold" style="color:var(--text)">المقارنة (<span id="compare-count">0</span>)</span>
+      <div id="compare-items" class="flex gap-2"></div>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="openCompareModal()" class="btn-primary text-sm py-2 px-4">قارن الآن</button>
+      <button onclick="clearCompare()" class="btn-secondary text-sm py-2 px-4">إفراغ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 w-full">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="fade-in" style="animation-delay:0.1s">
+        <div class="inline-block px-4 py-2 rounded-lg mb-6" style="background:rgba(199,91,18,0.1);border:1px solid rgba(199,91,18,0.2)">
+          <span class="text-sm font-bold" style="color:var(--primary)">🚀 منصتك العربية للتقنية والأنمي</span>
+        </div>
+        <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6" style="letter-spacing:-0.02em;color:var(--text)">
+          سوق بايت<br><span style="color:var(--primary)">عالمك التقني</span><br>في مكان واحد
+        </h1>
+        <p class="text-lg mb-8 leading-relaxed max-w-lg" style="color:var(--muted)">
+          منتجات أوتاكو، خدمات صيانة عن بُعد، دليل أنظمة التشغيل، أدوات ذكاء اصطناعي، وألعاب بروابط رسمية — كل هذا وأكثر في منصة عربية واحدة.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button onclick="scrollToSection('store')" class="btn-primary text-lg px-8 py-4">تصفح المتجر</button>
+          <button onclick="scrollToSection('services')" class="btn-outline text-lg px-8 py-4">اكتشف الخدمات</button>
+        </div>
+      </div>
+      <div class="hidden lg:flex justify-center relative fade-in" style="animation-delay:0.3s">
+        <div class="relative w-96 h-96">
+          <div class="absolute inset-0 rounded-full border-2 animate-pulse" style="border-color:rgba(199,91,18,0.2)"></div>
+          <div class="absolute inset-4 rounded-full border" style="border-color:rgba(199,91,18,0.1)"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-8xl mb-4">🎮</div>
+              <div class="text-6xl">⚡</div>
+            </div>
+          </div>
+          <div class="absolute -top-4 right-10 rounded-xl p-3 shadow-lg" style="background:var(--surface);border:1px solid var(--border)"><i class="fas fa-robot text-2xl" style="color:var(--primary)"></i></div>
+          <div class="absolute -bottom-4 left-10 rounded-xl p-3 shadow-lg" style="background:var(--surface);border:1px solid var(--border)"><i class="fas fa-laptop-code text-2xl" style="color:var(--accent)"></i></div>
+          <div class="absolute top-1/2 -left-8 rounded-xl p-3 shadow-lg" style="background:var(--surface);border:1px solid var(--border)"><i class="fas fa-dragon text-2xl" style="color:var(--warning)"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="py-16 border-y" style="border-color:var(--border)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div class="fade-in" style="animation-delay:0.1s"><div class="text-4xl lg:text-5xl font-black mb-2" style="color:var(--primary)">500+</div><div style="color:var(--muted)">منتج</div></div>
+      <div class="fade-in" style="animation-delay:0.2s"><div class="text-4xl lg:text-5xl font-black mb-2" style="color:var(--primary)">50+</div><div style="color:var(--muted)">خدمة تقنية</div></div>
+      <div class="fade-in" style="animation-delay:0.3s"><div class="text-4xl lg:text-5xl font-black mb-2" style="color:var(--primary)">20+</div><div style="color:var(--muted)">نظام تشغيل</div></div>
+      <div class="fade-in" style="animation-delay:0.4s"><div class="text-4xl lg:text-5xl font-black mb-2" style="color:var(--primary)">100+</div><div style="color:var(--muted)">أداة ذكاء اصطناعي</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-black mb-2 text-center" style="color:var(--text)">تصفح حسب الفئة</h2>
+    <p class="text-center mb-10" style="color:var(--muted)">اختر ما يهمك واكتشف المزيد</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div onclick="scrollToSection('store')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-shopping-bag text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">المتجر</h3><p class="text-sm" style="color:var(--muted)">20+ منتج</p>
+      </div>
+      <div onclick="scrollToSection('services')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-tools text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">الخدمات</h3><p class="text-sm" style="color:var(--muted)">10+ خدمة</p>
+      </div>
+      <div onclick="scrollToSection('os')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-desktop text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">أنظمة التشغيل</h3><p class="text-sm" style="color:var(--muted)">8 أنظمة</p>
+      </div>
+      <div onclick="scrollToSection('ai')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-brain text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">أدوات AI</h3><p class="text-sm" style="color:var(--muted)">15+ أداة</p>
+      </div>
+      <div onclick="scrollToSection('games')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-gamepad text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">الألعاب</h3><p class="text-sm" style="color:var(--muted)">10+ لعبة</p>
+      </div>
+      <div onclick="scrollToSection('anime')" class="card-hover rounded-xl p-6 text-center cursor-pointer" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-tv text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold mb-1" style="color:var(--text)">الأنمي</h3><p class="text-sm" style="color:var(--muted)">5+ أنمي</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Store Section -->
+<section id="store" class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">المتجر</h2>
+        <p style="color:var(--muted)">منتجات أوتاكو وإكسسوارات تقنية مختارة مع تفاصيل شاملة</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="filterProducts('all')" class="tab-btn active" data-pfilter="all">الكل</button>
+        <button onclick="filterProducts('مجسمات')" class="tab-btn" data-pfilter="مجسمات">مجسمات</button>
+        <button onclick="filterProducts('تقنية')" class="tab-btn" data-pfilter="تقنية">تقنية</button>
+        <button onclick="filterProducts('ألعاب')" class="tab-btn" data-pfilter="ألعاب">ألعاب</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid"></div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20" style="background:rgba(22,33,62,0.3)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">خدماتنا التقنية</h2>
+        <p style="color:var(--muted)">دعم فني عن بُعد، صيانة، وبرمجة بالذكاء الاصطناعي</p>
+      </div>
+      <button onclick="showToast('سيتم فتح صفحة الخدمات الكاملة قريباً', 'info')" class="btn-outline text-sm hidden md:block">عرض الكل</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="services-grid"></div>
+  </div>
+</section>
+
+<!-- OS Guide Section -->
+<section id="os" class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">دليل أنظمة التشغيل</h2>
+        <p style="color:var(--muted)">اكتشف أفضل نظام لجهازك مع روابط التحميل الرسمية والمتطلبات</p>
+      </div>
+      <button onclick="showToast('سيتم فتح أداة المقارنة قريباً', 'info')" class="btn-outline text-sm hidden md:flex items-center gap-2"><i class="fas fa-exchange-alt"></i> مقارنة</button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="os-grid"></div>
+  </div>
+</section>
+
+<!-- AI Tools Section -->
+<section id="ai" class="py-20" style="background:rgba(22,33,62,0.3)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">أدوات الذكاء الاصطناعي</h2>
+        <p style="color:var(--muted)">دليل شامل لأفضل أدوات AI حسب الاستخدام</p>
+      </div>
+      <div class="hidden md:flex gap-2">
+        <button onclick="filterAI('all')" class="tab-btn active" data-filter="all">الكل</button>
+        <button onclick="filterAI('كتابة')" class="tab-btn" data-filter="كتابة">كتابة</button>
+        <button onclick="filterAI('صور')" class="tab-btn" data-filter="صور">صور</button>
+        <button onclick="filterAI('برمجة')" class="tab-btn" data-filter="برمجة">برمجة</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="ai-grid"></div>
+  </div>
+</section>
+
+<!-- Games Section -->
+<section id="games" class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">دليل الألعاب</h2>
+        <p style="color:var(--muted)">روابط مباشرة للمواقع الرسمية والمتاجر مع متطلبات التشغيل</p>
+      </div>
+      <button onclick="showToast('سيتم فتح صفحة الألعاب الكاملة قريباً', 'info')" class="btn-outline text-sm hidden md:block">عرض الكل</button>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6" id="games-grid"></div>
+  </div>
+</section>
+
+<!-- Anime Section -->
+<section id="anime" class="py-20" style="background:rgba(22,33,62,0.3)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">دليل الأنمي</h2>
+        <p style="color:var(--muted)">منصات مشاهدة قانونية وغير قانونية مع تحذيرات الأمان</p>
+      </div>
+      <button onclick="showToast('سيتم فتح صفحة الأنمي الكاملة قريباً', 'info')" class="btn-outline text-sm hidden md:block">عرض الكل</button>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6" id="anime-grid"></div>
+  </div>
+</section>
+
+<!-- Community Section -->
+<section id="community" class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-black mb-2 text-center" style="color:var(--text)">مجتمع سوق بايت</h2>
+    <p class="text-center mb-10" style="color:var(--muted)">نقاشات، مراجعات، وحلول من مجتمعنا العربي</p>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <div class="flex gap-2 mb-6">
+          <button onclick="filterCommunity('all')" class="tab-btn active" data-cfilter="all">الكل</button>
+          <button onclick="filterCommunity('أنمي')" class="tab-btn" data-cfilter="أنمي">أنمي</button>
+          <button onclick="filterCommunity('ألعاب')" class="tab-btn" data-cfilter="ألعاب">ألعاب</button>
+          <button onclick="filterCommunity('أنظمة')" class="tab-btn" data-cfilter="أنظمة">أنظمة</button>
+          <button onclick="filterCommunity('تقنية')" class="tab-btn" data-cfilter="تقنية">تقنية</button>
+        </div>
+        <div id="community-posts"></div>
+      </div>
+      <div>
+        <div class="rounded-xl p-6" style="background:var(--surface);border:1px solid var(--border)">
+          <h3 class="font-bold mb-4" style="color:var(--text)">أضف منشوراً جديداً</h3>
+          <form onsubmit="event.preventDefault(); addCommunityPost();">
+            <input type="text" id="post-title" placeholder="عنوان المنشور" class="mb-3" required>
+            <select id="post-category" class="mb-3" required>
+              <option value="">اختر الفئة</option>
+              <option value="أنمي">أنمي</option>
+              <option value="ألعاب">ألعاب</option>
+              <option value="أنظمة">أنظمة</option>
+              <option value="تقنية">تقنية</option>
+            </select>
+            <textarea id="post-content" rows="3" placeholder="محتوى المنشور..." class="mb-3" required></textarea>
+            <button type="submit" class="btn-primary w-full">نشر</button>
+          </form>
+        </div>
+        <div class="rounded-xl p-6 mt-4" style="background:var(--surface);border:1px solid var(--border)">
+          <h3 class="font-bold mb-4" style="color:var(--text)">🔥 الأكثر تفاعلاً</h3>
+          <div id="trending-posts"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Freelance Section -->
+<section id="freelance" class="py-20" style="background:rgba(22,33,62,0.3)">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-black mb-2 text-center" style="color:var(--text)">دليل العمل الحر</h2>
+    <p class="text-center mb-10" style="color:var(--muted)">منصات موثوقة ونصائح للبدء</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="freelance-grid"></div>
+  </div>
+</section>
+
+<!-- News Section -->
+<section id="news" class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-black mb-2" style="color:var(--text)">أخبار التقنية</h2>
+        <p style="color:var(--muted)">آخر أخبار الذكاء الاصطناعي، الأجهزة، والألعاب</p>
+      </div>
+      <button onclick="showToast('سيتم فتح صفحة الأخبار الكاملة قريباً', 'info')" class="btn-outline text-sm hidden md:block">عرض الكل</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid"></div>
+  </div>
+</section>
+
+<!-- Support Section -->
+<section id="support" class="py-20" style="background:rgba(22,33,62,0.3)">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-black mb-2 text-center" style="color:var(--text)">الدعم الفني</h2>
+    <p class="text-center mb-10" style="color:var(--muted)">نحن هنا لمساعدتك — اختر طريقة التواصل المناسبة</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="rounded-xl p-8 text-center card-hover" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background:rgba(199,91,18,0.1)"><i class="fas fa-ticket-alt text-2xl" style="color:var(--primary)"></i></div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text)">فتح تذكرة</h3>
+        <p class="text-sm mb-4" style="color:var(--muted)">أرسل مشكلتك وسنرد عليك في أقل من 24 ساعة</p>
+        <button onclick="openTicketModal()" class="btn-primary w-full">فتح تذكرة</button>
+      </div>
+      <div class="rounded-xl p-8 text-center card-hover" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background:rgba(15,155,110,0.1)"><i class="fab fa-whatsapp text-2xl" style="color:var(--success)"></i></div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text)">واتساب</h3>
+        <p class="text-sm mb-4" style="color:var(--muted)">تواصل مباشر للاستفسارات العاجلة</p>
+        <a href="https://wa.me/249112135062" target="_blank" class="btn-primary w-full inline-block" style="background:var(--success)">تواصل عبر واتساب</a>
+      </div>
+      <div class="rounded-xl p-8 text-center card-hover" style="background:var(--surface);border:1px solid var(--border)">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background:rgba(244,162,97,0.1)"><i class="fas fa-envelope text-2xl" style="color:var(--warning)"></i></div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text)">بريد إلكتروني</h3>
+        <p class="text-sm mb-4" style="color:var(--muted)">للاستفسارات التفصيلية والتعاون</p>
+        <a href="mailto:support@souqbyte.com" class="btn-outline w-full inline-block">إرسال بريد</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="py-20" style="background:linear-gradient(to bottom, var(--bg), var(--surface))">
+  <div class="max-w-2xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-black mb-4" style="color:var(--text)">اشترك في نشرتنا البريدية</h2>
+    <p class="mb-8" style="color:var(--muted)">احصل على آخر أخبار التقنية، عروض الألعاب المجانية، وأدوات AI الجديدة أسبوعياً</p>
+    <form onsubmit="event.preventDefault(); subscribeNewsletter();" class="flex flex-col sm:flex-row gap-4">
+      <input type="email" placeholder="بريدك الإلكتروني" required class="flex-1">
+      <button type="submit" class="btn-primary whitespace-nowrap">اشتراك</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t pt-16 pb-8" style="background:var(--secondary);border-color:var(--border)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center relative" style="border-color:var(--primary)">
+            <div class="w-2 h-2 rounded-full absolute" style="background:var(--primary)"></div>
+          </div>
+          <div>
+            <span class="text-xl font-bold" style="color:var(--text)">سوق بايت</span>
+            <span class="text-xs block -mt-1" style="font-family:'Space Grotesk',sans-serif;letter-spacing:0.1em;color:var(--muted)">SOQBYTE</span>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed" style="color:var(--muted)">منصة عربية متكاملة تجمع بين التجارة الإلكترونية، الخدمات التقنية، والمحتوى المعرفي لمحبي التقنية والأنمي.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4" style="color:var(--text)">روابط سريعة</h4>
+        <ul class="space-y-2 text-sm" style="color:var(--muted)">
+          <li><a href="#store" class="hover:text-primary transition-colors">المتجر</a></li>
+          <li><a href="#services" class="hover:text-primary transition-colors">الخدمات</a></li>
+          <li><a href="#os" class="hover:text-primary transition-colors">أنظمة التشغيل</a></li>
+          <li><a href="#ai" class="hover:text-primary transition-colors">أدوات AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4" style="color:var(--text)">خدمات</h4>
+        <ul class="space-y-2 text-sm" style="color:var(--muted)">
+          <li><a href="#services" class="hover:text-primary transition-colors">دعم فني عن بُعد</a></li>
+          <li><a href="#services" class="hover:text-primary transition-colors">صيانة ويندوز</a></li>
+          <li><a href="#services" class="hover:text-primary transition-colors">برمجة بالذكاء الاصطناعي</a></li>
+          <li><a href="#services" class="hover:text-primary transition-colors">تثبيت أنظمة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4" style="color:var(--text)">تواصل معنا</h4>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--primary)';this.style.borderColor='var(--primary)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--primary)';this.style.borderColor='var(--primary)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--primary)';this.style.borderColor='var(--primary)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--primary)';this.style.borderColor='var(--primary)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:var(--border)">
+      <p class="text-sm" style="color:var(--muted)">© 2026 سوق بايت — جميع الحقوق محفوظة</p>
+      <div class="flex gap-6 text-sm" style="color:var(--muted)">
+        <a href="#" class="hover:text-primary transition-colors">سياسة الخصوصية</a>
+        <a href="#" class="hover:text-primary transition-colors">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- Product Detail Modal -->
+<div id="product-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeProductModal()" class="absolute top-4 left-4 z-10 w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+    <div id="product-modal-content"></div>
+  </div>
+</div>
+
+<!-- OS Detail Modal -->
+<div id="os-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeOSModal()" class="absolute top-4 left-4 z-10 w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+    <div id="os-modal-content"></div>
+  </div>
+</div>
+
+<!-- Game Detail Modal -->
+<div id="game-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeGameModal()" class="absolute top-4 left-4 z-10 w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+    <div id="game-modal-content"></div>
+  </div>
+</div>
+
+<!-- Anime Detail Modal -->
+<div id="anime-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeAnimeModal()" class="absolute top-4 left-4 z-10 w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+    <div id="anime-modal-content"></div>
+  </div>
+</div>
+
+<!-- Compare Modal -->
+<div id="compare-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeCompareModal()" class="absolute top-4 left-4 z-10 w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+    <h2 class="text-2xl font-black mb-6" style="color:var(--text)">⚖️ مقارنة جانبية</h2>
+    <div id="compare-modal-content"></div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div id="login-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-md mx-4 rounded-2xl p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeLoginModal()" class="absolute top-4 left-4" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times text-xl"></i></button>
+    <h2 class="text-2xl font-bold mb-6 text-center" style="color:var(--text)">تسجيل الدخول</h2>
+    <form onsubmit="event.preventDefault(); login();">
+      <div class="mb-4">
+        <label class="block text-sm mb-2" style="color:var(--muted)">البريد الإلكتروني</label>
+        <input type="email" required placeholder="your@email.com">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm mb-2" style="color:var(--muted)">كلمة المرور</label>
+        <div class="relative">
+          <input type="password" id="login-password" required placeholder="********">
+          <button type="button" onclick="togglePassword('login-password')" class="absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mb-6">
+        <label class="flex items-center gap-2 text-sm cursor-pointer" style="color:var(--muted)">
+          <input type="checkbox" class="w-4 h-4" style="accent-color:var(--primary)"> تذكرني
+        </label>
+        <a href="#" class="text-sm hover:underline" style="color:var(--primary)">نسيت كلمة المرور؟</a>
+      </div>
+      <button type="submit" class="btn-primary w-full mb-4">تسجيل الدخول</button>
+      <button type="button" onclick="showToast('تسجيل الدخول عبر Google قريباً', 'info')" class="w-full py-3 rounded-lg border flex items-center justify-center gap-3 transition-all" style="border-color:var(--border);background:var(--surface);color:var(--text)" onmouseover="this.style.background='var(--border)'" onmouseout="this.style.background='var(--surface)'">
+        <i class="fab fa-google" style="color:var(--accent)"></i> <span>الدخول بحساب Google</span>
+      </button>
+      <p class="text-center text-sm mt-4" style="color:var(--muted)">ليس لديك حساب؟ <a href="#" onclick="showToast('صفحة التسجيل قريباً', 'info')" class="hover:underline" style="color:var(--primary)">سجل الآن</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- Ticket Modal -->
+<div id="ticket-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="modal-content w-full max-w-lg mx-4 rounded-2xl p-8 relative" style="background:var(--secondary);border:1px solid var(--border)">
+    <button onclick="closeTicketModal()" class="absolute top-4 left-4" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-times text-xl"></i></button>
+    <h2 class="text-2xl font-bold mb-6" style="color:var(--text)">فتح تذكرة دعم فني</h2>
+    <form onsubmit="event.preventDefault(); submitTicket();">
+      <div class="mb-4">
+        <label class="block text-sm mb-2" style="color:var(--muted)">الموضوع</label>
+        <input type="text" required placeholder="مثال: مشكلة في تثبيت ويندوز">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm mb-2" style="color:var(--muted)">الفئة</label>
+        <select required>
+          <option value="">اختر الفئة</option>
+          <option value="windows">Windows</option>
+          <option value="linux">Linux</option>
+          <option value="android">Android</option>
+          <option value="programming">برمجة</option>
+          <option value="general">استفسار عام</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm mb-2" style="color:var(--muted)">الأولوية</label>
+        <select required>
+          <option value="medium">متوسطة</option>
+          <option value="low">منخفضة</option>
+          <option value="high">عالية</option>
+          <option value="urgent">عاجلة</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm mb-2" style="color:var(--muted)">الرسالة</label>
+        <textarea rows="4" required placeholder="اشرح مشكلتك بالتفصيل..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary w-full">إرسال التذكرة</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast px-6 py-4 rounded-xl shadow-lg flex items-center gap-3" style="background:var(--surface);border:1px solid var(--border)">
+  <i id="toast-icon" class="fas fa-check-circle" style="color:var(--success)"></i>
+  <span id="toast-message" style="color:var(--text)">تمت العملية بنجاح</span>
+</div>
+
+<script>
+// ==================== DATA ====================
+
+const products = [
+  {
+    id: 1, name: "مجسم ليفاي (Attack on Titan)", price: 45, oldPrice: 55, image: "🗡️", category: "مجسمات", badge: "خصم", rating: 4.8, reviews: 124,
+    manufacturer: "Good Smile Company", country: "اليابان 🇯🇵", productType: "مجسم PVC", classification: "أنمي / أكشن",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.goodsmile.info",
+    socialLinks: { facebook: "https://facebook.com/goodsmile", instagram: "https://instagram.com/goodsmile", twitter: "https://twitter.com/goodsmile" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "175 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "171 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "2,100 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$45", store: "Amazon.com" },
+      { country: "🇯🇵 اليابان", price: "¥6,800", store: "AmiAmi" }
+    ],
+    trustedSources: [
+      { name: "MyFigureCollection", url: "https://myfigurecollection.net" },
+      { name: "Crunchyroll Store", url: "https://store.crunchyroll.com" },
+      { name: "Anime-Planet", url: "https://www.anime-planet.com" }
+    ],
+    description: "مجسم فاخر لشخصية ليفاي أكرمان من أنمي Attack on Titan بتفاصيل دقيقة وطلاء عالي الجودة. الارتفاع 17 سم."
+  },
+  {
+    id: 2, name: "تيشيرت One Piece", price: 25, oldPrice: null, image: "👕", category: "ملابس", badge: "جديد", rating: 4.5, reviews: 89,
+    manufacturer: "Crunchyroll Store", country: "أمريكا 🇺🇸", productType: "ملابس قطنية", classification: "أنمي / كاجوال",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://store.crunchyroll.com",
+    socialLinks: { facebook: "https://facebook.com/crunchyroll", instagram: "https://instagram.com/crunchyroll", twitter: "https://twitter.com/crunchyroll" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "94 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "92 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "775 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$25", store: "Crunchyroll Store" }
+    ],
+    trustedSources: [
+      { name: "Crunchyroll Store", url: "https://store.crunchyroll.com" },
+      { name: "Hot Topic", url: "https://www.hottopic.com" }
+    ],
+    description: "تيشيرت قطني 100% بطباعة عالية الجودة لشخصيات One Piece. متوفر بمقاسات S إلى XXL."
+  },
+  {
+    id: 3, name: "بوستر Naruto Shippuden", price: 15, oldPrice: null, image: "🖼️", category: "بوسترات", badge: null, rating: 4.7, reviews: 56,
+    manufacturer: "PosterMyWall", country: "أمريكا 🇺🇸", productType: "بوستر ورقي", classification: "ديكور / أنمي",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.postermywall.com",
+    socialLinks: { facebook: "https://facebook.com/postermywall", instagram: "https://instagram.com/postermywall" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "56 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "55 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "465 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$15", store: "Amazon.com" }
+    ],
+    trustedSources: [
+      { name: "Amazon Reviews", url: "https://amazon.com" },
+      { name: "Reddit r/Naruto", url: "https://reddit.com/r/Naruto" }
+    ],
+    description: "بوستر Naruto Shippuden مقاس 24×36 بوصة بطباعة عالية الدقة على ورق لامع مقاوم للماء."
+  },
+  {
+    id: 4, name: "سماعات رأس لاسلكية", price: 35, oldPrice: 50, image: "🎧", category: "تقنية", badge: "خصم", rating: 4.6, reviews: 203,
+    manufacturer: "SoundCore (Anker)", country: "الصين 🇨🇳", productType: "إكسسوارات صوت", classification: "تقنية / صوت",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.soundcore.com",
+    socialLinks: { facebook: "https://facebook.com/soundcore", instagram: "https://instagram.com/soundcoreaudio", twitter: "https://twitter.com/soundcoreaudio" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "131 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "128 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "1,085 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$35", store: "Amazon.com" }
+    ],
+    trustedSources: [
+      { name: "RTings", url: "https://www.rtings.com" },
+      { name: "What Hi-Fi?", url: "https://www.whathifi.com" }
+    ],
+    description: "سماعات رأس لاسلكية بتقنية Bluetooth 5.3، عمر بطارية 40 ساعة، وصوت محيطي."
+  },
+  {
+    id: 5, name: "مجسم Goku (Dragon Ball)", price: 50, oldPrice: null, image: "🔥", category: "مجسمات", badge: "جديد", rating: 4.9, reviews: 312,
+    manufacturer: "Bandai Namco", country: "اليابان 🇯🇵", productType: "مجسم PVC", classification: "أنمي / أكشن",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.bandainamco.co.jp",
+    socialLinks: { facebook: "https://facebook.com/bandainamco", instagram: "https://instagram.com/bandainamco", twitter: "https://twitter.com/bandainamco" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "188 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "184 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "2,330 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$50", store: "Amazon.com" },
+      { country: "🇯🇵 اليابان", price: "¥7,500", store: "AmiAmi" }
+    ],
+    trustedSources: [
+      { name: "MyFigureCollection", url: "https://myfigurecollection.net" },
+      { name: "Crunchyroll Store", url: "https://store.crunchyroll.com" }
+    ],
+    description: "مجسم Goku Ultra Instinct من Dragon Ball Super. ارتفاع 20 سم مع قاعدة مضيئة."
+  },
+  {
+    id: 6, name: "ساعة ذكية", price: 80, oldPrice: null, image: "⌚", category: "تقنية", badge: null, rating: 4.4, reviews: 178,
+    manufacturer: "Xiaomi", country: "الصين 🇨🇳", productType: "ساعة ذكية", classification: "تقنية / صحة",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.mi.com",
+    socialLinks: { facebook: "https://facebook.com/Xiaomi", instagram: "https://instagram.com/xiaomi", twitter: "https://twitter.com/xiaomi" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "300 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "294 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "2,480 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$80", store: "Amazon.com" }
+    ],
+    trustedSources: [
+      { name: "GSMArena", url: "https://www.gsmarena.com" },
+      { name: "TechRadar", url: "https://www.techradar.com" }
+    ],
+    description: "ساعة ذكية بشاشة AMOLED، مقاومة للماء IP68، تتبع اللياقة البدنية، وعمر بطارية 14 يوم."
+  },
+  {
+    id: 7, name: "حافظة هاتف أنمي", price: 12, oldPrice: null, image: "📱", category: "إكسسوارات", badge: null, rating: 4.3, reviews: 67,
+    manufacturer: "CaseTify", country: "هونغ كونغ 🇭🇰", productType: "إكسسوارات هاتف", classification: "أنمي / تقنية",
+    availableArab: false, availableInUserCountry: false,
+    officialWebsite: "https://www.casetify.com",
+    socialLinks: { facebook: "https://facebook.com/casetify", instagram: "https://instagram.com/casetify", twitter: "https://twitter.com/casetify" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "غير متوفر", store: "—" },
+      { country: "🇦🇪 الإمارات", price: "44 د.إ", store: "Amazon.ae" },
+      { country: "🇪🇬 مصر", price: "372 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$12", store: "CaseTify.com" }
+    ],
+    trustedSources: [
+      { name: "CaseTify Official", url: "https://www.casetify.com" }
+    ],
+    description: "حافظة هاتف بتصاميم أنمي حصريّة. حماية عسكرية ضد السقوط."
+  },
+  {
+    id: 8, name: "كيبورد ميكانيكي ألعاب", price: 65, oldPrice: 80, image: "⌨️", category: "ألعاب", badge: "خصم", rating: 4.8, reviews: 145,
+    manufacturer: "Redragon", country: "الصين 🇨🇳", productType: "كيبورد ألعاب", classification: "ألعاب / تقنية",
+    availableArab: true, availableInUserCountry: true,
+    officialWebsite: "https://www.redragon.com",
+    socialLinks: { facebook: "https://facebook.com/redragon", instagram: "https://instagram.com/redragon", twitter: "https://twitter.com/redragon" },
+    priceComparison: [
+      { country: "🇸🇦 السعودية", price: "244 ر.س", store: "Amazon.sa" },
+      { country: "🇦🇪 الإمارات", price: "239 د.إ", store: "Noon" },
+      { country: "🇪🇬 مصر", price: "2,015 ج.م", store: "Jumia" },
+      { country: "🇺🇸 أمريكا", price: "$65", store: "Amazon.com" }
+    ],
+    trustedSources: [
+      { name: "RTings", url: "https://www.rtings.com" },
+      { name: "TechPowerUp", url: "https://www.techpowerup.com" }
+    ],
+    description: "كيبورد ميكانيكي RGB بمفاتيح Red Switch، إضاءة قابلة للتخصيص، وبرنامج Macro."
+  }
+];
+
+const osGuides = [
+  {
+    id: 0, name: "Windows 11", developer: "Microsoft", free: false, ram: "4GB", storage: "64GB", image: "🪟", category: "Windows",
+    systemRequirements: {
+      min: { cpu: "1 جيجاهرتز ثنائي النواة", ram: "4GB", storage: "64GB", gpu: "DirectX 9 متوافق", display: "720p", tpm: "TPM 2.0" },
+      rec: { cpu: "Intel i5 / Ryzen 5 حديث", ram: "8GB+", storage: "128GB SSD", gpu: "DirectX 12", display: "1080p", tpm: "TPM 2.0" }
+    },
+    essentialRequirements: ["TPM 2.0", "UEFI Secure Boot", "4GB RAM على الأقل", "64GB تخزين"],
+    alternativeMethods: [
+      { name: "Live USB", desc: "تشغيل ويندوز 11 من USB بدون تثبيت", difficulty: "سهل" },
+      { name: "Registry Hack", desc: "تجاوز متطلبات TPM و Secure Boot", difficulty: "متوسط" },
+      { name: "Rufus Bypass", desc: "استخدام Rufus لإنشاء USB بدون TPM", difficulty: "سهل" },
+      { name: "WSL2", desc: "تشغيل لينكس داخل ويندوز 10/11", difficulty: "سهل" }
+    ],
+    officialWebsite: "https://www.microsoft.com/windows",
+    downloadLinks: [
+      { name: "Media Creation Tool", url: "https://www.microsoft.com/software-download/windows11", size: "~5GB" },
+      { name: "ISO مباشر", url: "https://www.microsoft.com/software-download/windows11", size: "5.4GB" }
+    ],
+    installationGuide: [
+      "تحميل Media Creation Tool من الموقع الرسمي",
+      "إنشاء USB bootable بحجم 8GB على الأقل",
+      "تغيير إعدادات BIOS لتشغيل من USB",
+      "اتبع معالج التثبيت واختر التقسيم المناسب",
+      "إدخال مفتاح الترخيص أو تخطي (تنشيط لاحقاً)",
+      "الانتظار حتى اكتمال التثبيت (20-40 دقيقة)"
+    ],
+    commonErrors: [
+      { error: "This PC can't run Windows 11", solution: "تفعيل TPM 2.0 و Secure Boot من BIOS أو استخدام Registry Hack" },
+      { error: "0x80070002", solution: "إعادة تحميل ملف ISO أو استخدام أداة إصلاح ملفات النظام (SFC /scannow)" },
+      { error: "بطء بعد التحديث", solution: "تعطيل Startup programs وإلغاء تثبيت التحديثات المسببة" }
+    ],
+    developerInfo: { company: "Microsoft Corporation", founded: 1975, headquarters: "ريدموند، واشنطن، أمريكا", ceo: "Satya Nadella" },
+    versions: [
+      { name: "Windows 10", releaseDate: "2015", pros: ["أخف على الأجهزة الضعيفة", "دعم أطول حتى 2025"], cons: ["لا يدعم أحدث تطبيقات Android", "واجهة أقدم"], differences: "ويندوز 11 أحدث واجهة وأداء أفضل على SSD" },
+      { name: "Windows 8.1", releaseDate: "2013", pros: ["سريع جداً", "يستهلك موارد أقل"], cons: ["انتهى الدعم الرسمي", "لا يدعم تطبيقات حديثة"], differences: "واجهة Metro غير محبوبة، لا يوجد متجر Microsoft الحديث" },
+      { name: "Windows 7", releaseDate: "2009", pros: ["الأخف والأسرع", "يعمل على أي جهاز"], cons: ["انتهى الدعم تماماً 2020", "ثغرات أمان خطيرة"], differences: "لا يوجد دعم تقني أو تحديثات أمان — غير موصى به إطلاقاً" }
+    ],
+    freeCourses: [
+      { name: "Windows 11 Complete Guide", platform: "YouTube", url: "https://youtube.com" },
+      { name: "Microsoft Learn", platform: "Microsoft", url: "https://learn.microsoft.com" }
+    ],
+    specialties: ["ألعاب", "برمجة", "مكتبية", "تصميم", "سيرفرات"],
+    userReviews: [
+      { user: "أحمد", avatar: "أ", rating: 5, date: "2026-08-10", text: "ويندوز 11 ممتاز للألعاب، الأداء أفضل من 10 بكثير." },
+      { user: "سارة", avatar: "س", rating: 4, date: "2026-08-05", text: "الواجهة جميلة لكن يحتاج جهاز قوي." }
+    ],
+    description: "أحدث نظام تشغيل من Microsoft مع واجهة حديثة، دعم تطبيقات Android، وتحسينات في الألعاب."
+  },
+  {
+    id: 1, name: "Ubuntu 24.04 LTS", developer: "Canonical", free: true, ram: "2GB", storage: "25GB", image: "🐧", category: "Linux",
+    systemRequirements: {
+      min: { cpu: "2 جيجاهرتز ثنائي النواة", ram: "2GB", storage: "25GB", gpu: "VGA 1024x768", display: "1024x768", tpm: "غير مطلوب" },
+      rec: { cpu: "Intel i3 / Ryzen 3", ram: "4GB+", storage: "50GB SSD", gpu: "OpenGL", display: "1080p", tpm: "غير مطلوب" }
+    },
+    essentialRequirements: ["2GB RAM", "25GB تخزين", "معالج ثنائي النواة"],
+    alternativeMethods: [
+      { name: "Live USB", desc: "تشغيل Ubuntu بدون تثبيت", difficulty: "سهل" },
+      { name: "WSL2", desc: "تشغيل Ubuntu داخل ويندوز", difficulty: "سهل" },
+      { name: "VirtualBox", desc: "تشغيل Ubuntu كجهاز افتراضي", difficulty: "متوسط" },
+      { name: "Dual Boot", desc: "تثبيت Ubuntu بجانب ويندوز", difficulty: "متوسط" }
+    ],
+    officialWebsite: "https://ubuntu.com",
+    downloadLinks: [
+      { name: "Ubuntu Desktop ISO", url: "https://ubuntu.com/download/desktop", size: "5.8GB" },
+      { name: "Ubuntu Server ISO", url: "https://ubuntu.com/download/server", size: "2.1GB" }
+    ],
+    installationGuide: [
+      "تحميل ISO من ubuntu.com",
+      "إنشاء USB bootable باستخدام Rufus أو BalenaEtcher",
+      "تشغيل الجهاز من USB",
+      "اختيار 'Try Ubuntu' أو 'Install Ubuntu'",
+      "اتبع معالج التثبيت (اختيار اللغة والتقسيم)",
+      "إعادة التشغيل وإزالة USB"
+    ],
+    commonErrors: [
+      { error: "WiFi لا يعمل", solution: "تثبيت برامج تشغيل إضافية عبر كابل Ethernet أو USB tethering" },
+      { error: "شاشة سوداء بعد التثبيت", solution: "إضافة nomodeset في إعدادات Grub" },
+      { error: "لا يوجد صوت", solution: "تثبيت ALSA/PulseAudio أو إعادة تشغيل خدمة الصوت" }
+    ],
+    developerInfo: { company: "Canonical Ltd.", founded: 2004, headquarters: "لندن، المملكة المتحدة", ceo: "Mark Shuttleworth" },
+    versions: [
+      { name: "Ubuntu 22.04 LTS", releaseDate: "2022", pros: ["مستقر جداً", "دعم طويل حتى 2027"], cons: ["حزم أقدم", "نواة Linux أقدم"], differences: "24.04 أحدث حزم ونواة Linux 6.8" },
+      { name: "Ubuntu 20.04 LTS", releaseDate: "2020", pros: ["مستقر للغاية", "يستهلك موارد أقل"], cons: ["برامج قديمة نسبياً", "دعم ينتهي 2025"], differences: "20.04 أخف لكن البرامج أقدم" },
+      { name: "Ubuntu 18.04 LTS", releaseDate: "2018", pros: ["الأخف", "يعمل على أي جهاز"], cons: ["انتهى الدعم 2023", "برامج قديمة جداً"], differences: "غير موصى به للاستخدام اليومي" }
+    ],
+    freeCourses: [
+      { name: "Linux Foundation Training", platform: "edX", url: "https://edx.org" },
+      { name: "Ubuntu Desktop Guide", platform: "Ubuntu", url: "https://help.ubuntu.com" }
+    ],
+    specialties: ["برمجة", "سيرفرات", "أمن سيبراني", "ذكاء اصطناعي", "تعلم الآلة"],
+    userReviews: [
+      { user: "محمد", avatar: "م", rating: 5, date: "2026-08-12", text: "أفضل توزيعة للمبتدئين، كل شيء يعمل من الصندوق." }
+    ],
+    description: "أشهر توزيعة Linux سهلة الاستخدام مع دعم طويل الأمد (LTS) ومجتمع عربي كبير."
+  },
+  {
+    id: 2, name: "Linux Mint 22", developer: "Community", free: true, ram: "2GB", storage: "20GB", image: "🌿", category: "Linux",
+    systemRequirements: {
+      min: { cpu: "x86 معالج", ram: "2GB", storage: "20GB", gpu: "VGA 800x600", display: "800x600", tpm: "غير مطلوب" },
+      rec: { cpu: "Intel i3 / Ryzen 3", ram: "4GB+", storage: "50GB SSD", gpu: "OpenGL", display: "1080p", tpm: "غير مطلوب" }
+    },
+    essentialRequirements: ["2GB RAM", "20GB تخزين", "معالج x86"],
+    alternativeMethods: [
+      { name: "Live USB", desc: "تشغيل Mint بدون تثبيت", difficulty: "سهل" },
+      { name: "VirtualBox", desc: "تشغيل كجهاز افتراضي", difficulty: "متوسط" },
+      { name: "Dual Boot", desc: "تثبيت بجانب ويندوز", difficulty: "متوسط" }
+    ],
+    officialWebsite: "https://linuxmint.com",
+    downloadLinks: [
+      { name: "Cinnamon Edition", url: "https://linuxmint.com/download.php", size: "2.7GB" },
+      { name: "Xfce Edition (للأجهزة الضعيفة)", url: "https://linuxmint.com/download.php", size: "2.3GB" }
+    ],
+    installationGuide: [
+      "تحميل ISO من linuxmint.com",
+      "حرق ISO على USB باستخدام BalenaEtcher",
+      "تشغيل الجهاز من USB",
+      "اختيار 'Start Linux Mint'",
+      "النقر على أيقونة 'Install Linux Mint' على سطح المكتب",
+      "اتبع المعالج واختيار التقسيم"
+    ],
+    commonErrors: [
+      { error: "الشاشة تومض بعد التثبيت", solution: "تثبيت برامج تشغيل NVIDIA/AMD من مدير التعريفات" },
+      { error: "لا يمكن تحديث الحزم", solution: "تغيير mirrors في مدير التحديثات إلى أقرب سيرفر" }
+    ],
+    developerInfo: { company: "Linux Mint Team", founded: 2006, headquarters: "أيرلندا", ceo: "Clement Lefebvre" },
+    versions: [
+      { name: "Mint 21.3", releaseDate: "2024", pros: ["مستقر", "Cinnamon محسّن"], cons: ["نواة أقدم من 22"], differences: "22 يأتي بـ Ubuntu 24.04 كقاعدة" },
+      { name: "Mint 20.3", releaseDate: "2022", pros: ["أخف", "يعمل على الأجهزة القديمة"], cons: ["دعم ينتهي 2025"], differences: "20.3 مبني على Ubuntu 20.04" }
+    ],
+    freeCourses: [
+      { name: "Linux Mint User Guide", platform: "Linux Mint", url: "https://linuxmint.com/documentation.php" }
+    ],
+    specialties: ["استخدام يومي", "أجهزة قديمة", "برمجة", "تصميم"],
+    userReviews: [
+      { user: "خالد", avatar: "خ", rating: 5, date: "2026-08-08", text: "Mint أفضل من Ubuntu للمبتدئين، Cinnamon رائع." }
+    ],
+    description: "توزيعة Linux سهلة ومريحة للمستخدمين القادمين من Windows مع واجهة Cinnamon الأنيقة."
+  },
+  {
+    id: 3, name: "ChromeOS Flex", developer: "Google", free: true, ram: "4GB", storage: "16GB", image: "🌐", category: "ChromeOS",
+    systemRequirements: {
+      min: { cpu: "Intel/AMD 2010+", ram: "4GB", storage: "16GB", gpu: "متوافق", display: "1024x768", tpm: "غير مطلوب" },
+      rec: { cpu: "Intel i3 / Ryzen 3", ram: "8GB", storage: "32GB SSD", gpu: "متوافق", display: "1080p", tpm: "غير مطلوب" }
+    },
+    essentialRequirements: ["4GB RAM", "16GB تخزين", "معالج Intel/AMD 2010 أو أحدث"],
+    alternativeMethods: [
+      { name: "Live USB", desc: "تجربة ChromeOS Flex بدون تثبيت", difficulty: "سهل" },
+      { name: "تثبيت كامل", desc: "استبدال نظامك الحالي بـ ChromeOS", difficulty: "سهل" }
+    ],
+    officialWebsite: "https://chromeenterprise.google/os/chromeosflex/",
+    downloadLinks: [
+      { name: "ChromeOS Flex Installer", url: "https://chromeenterprise.google/os/chromeosflex/", size: "~1GB" }
+    ],
+    installationGuide: [
+      "تحميل Chromebook Recovery Utility من Chrome Web Store",
+      "إنشاء USB bootable باستخدام الإضافة",
+      "تشغيل الجهاز من USB",
+      "اتباع معالج الإعداد (يحتاج حساب Google)",
+      "الانتظار حتى اكتمال التثبيت (15-20 دقيقة)"
+    ],
+    commonErrors: [
+      { error: "WiFi لا يعمل", solution: "بعض كروت الشبكة غير مدعومة — استخدام كابل Ethernet" },
+      { error: "اللمس لا يعمل", solution: "بعض شاشات اللمس غير مدعومة — استخدام الفأرة" }
+    ],
+    developerInfo: { company: "Google LLC", founded: 1998, headquarters: "ماونتن فيو، كاليفورنيا", ceo: "Sundar Pichai" },
+    versions: [
+      { name: "ChromeOS (أصلي)", releaseDate: "2011", pros: ["أصلي للأجهزة Chromebook", "أداء مثالي"], cons: ["يحتاج جهاز Chromebook"], differences: "Flex للأجهزة العادية، ChromeOS للأجهزة المخصصة" }
+    ],
+    freeCourses: [
+      { name: "ChromeOS Help Center", platform: "Google", url: "https://support.google.com/chromeos" }
+    ],
+    specialties: ["تصفح الإنترنت", "أجهزة قديمة", "تعليم", "أعمال خفيفة"],
+    userReviews: [
+      { user: "فاطمة", avatar: "ف", rating: 4, date: "2026-08-01", text: "حوّلت لابتوب قديم لجهاز سريع جداً للتصفح." }
+    ],
+    description: "نظام Google الخفيف الذي يحول أي لابتوب قديم إلى جهاز Chromebook سريع وآمن."
+  }
+];
+
+const games = [
+  {
+    id: 0, name: "Elden Ring", platform: "PC/PS/Xbox", price: 59.99, free: false, image: "⚔️", genre: "RPG",
+    officialWebsite: "https://www.eldenring.com",
+    storeLinks: [
+      { store: "Steam", price: "$59.99", url: "https://store.steampowered.com/app/1245620" },
+      { store: "PlayStation Store", price: "$59.99", url: "https://store.playstation.com" },
+      { store: "Xbox Store", price: "$59.99", url: "https://www.xbox.com/games/store" }
+    ],
+    versions: [
+      { name: "Elden Ring Standard", releaseDate: "2022", pros: ["اللعبة الأساسية الكاملة", "سعر مناسب"], cons: ["لا يتضمن DLC"], differences: "الإصدار الأساسي فقط" },
+      { name: "Elden Ring Shadow of the Erdtree Edition", releaseDate: "2024", pros: ["يتضمن DLC ضخم", "محتوى إضافي 30+ ساعة"], cons: ["أغلى"], differences: "يتضمن Shadow of the Erdtree DLC" }
+    ],
+    systemRequirements: {
+      min: { os: "Windows 10", cpu: "Intel i5-8400 / Ryzen 3 3300X", ram: "12GB", gpu: "GTX 1060 3GB / RX 580 4GB", storage: "60GB" },
+      rec: { os: "Windows 11", cpu: "Intel i7-8700K / Ryzen 5 3600X", ram: "16GB", gpu: "RTX 2070 / RX 6700 XT", storage: "60GB SSD" }
+    },
+    developer: "FromSoftware", publisher: "Bandai Namco", releaseDate: "25 فبراير 2022",
+    reviews: [
+      { source: "Metacritic", score: "96/100" },
+      { source: "IGN", score: "10/10" },
+      { source: "Steam", score: "إيجابي جداً" }
+    ],
+    userReviews: [
+      { user: "عمر", avatar: "ع", rating: 5, date: "2026-08-10", text: "تحفة فنية! العالم المفتوح والتصميم الفني لا يُضاهى." }
+    ],
+    description: "لعبة RPG عالم مفتوح من FromSoftware مع عالم مظلم وأسطوري وتحديات صعبة."
+  },
+  {
+    id: 1, name: "Genshin Impact", platform: "PC/PS/Mobile", price: 0, free: true, image: "🌸", genre: "RPG",
+    officialWebsite: "https://genshin.hoyoverse.com",
+    storeLinks: [
+      { store: "Official Launcher", price: "مجاني", url: "https://genshin.hoyoverse.com" },
+      { store: "PlayStation Store", price: "مجاني", url: "https://store.playstation.com" },
+      { store: "App Store", price: "مجاني", url: "https://apps.apple.com" },
+      { store: "Google Play", price: "مجاني", url: "https://play.google.com" }
+    ],
+    versions: [
+      { name: "Genshin Impact (عالمي)", releaseDate: "2020", pros: ["تحديثات متكررة", "محتوى ضخم"], cons: ["Gacha system", "يحتاج grinding"], differences: "الإصدار الوحيد المتاح عالمياً" }
+    ],
+    systemRequirements: {
+      min: { os: "Windows 7", cpu: "Intel i5 / equivalent", ram: "8GB", gpu: "GT 1030", storage: "30GB" },
+      rec: { os: "Windows 10/11", cpu: "Intel i7 / Ryzen 5", ram: "16GB", gpu: "GTX 1060", storage: "50GB SSD" }
+    },
+    developer: "HoYoverse", publisher: "HoYoverse", releaseDate: "28 سبتمبر 2020",
+    reviews: [
+      { source: "Metacritic", score: "81/100" },
+      { source: "IGN", score: "9/10" }
+    ],
+    userReviews: [
+      { user: "ليلى", avatar: "ل", rating: 4, date: "2026-08-05", text: "لعبة رائعة لكن نظام Gacha مزعج أحياناً." }
+    ],
+    description: "لعبة RPG عالم مفتوح مجانية مع عالم Teyvat الساحر وشخصيات متنوعة."
+  },
+  {
+    id: 2, name: "Valorant", platform: "PC", price: 0, free: true, image: "🔫", genre: "Shooter",
+    officialWebsite: "https://playvalorant.com",
+    storeLinks: [
+      { store: "Riot Games", price: "مجاني", url: "https://playvalorant.com" }
+    ],
+    versions: [
+      { name: "Valorant", releaseDate: "2020", pros: ["مجاني", "منافسات eSports"], cons: [" Vanguard مثير للجدل"], differences: "إصدار واحد فقط" }
+    ],
+    systemRequirements: {
+      min: { os: "Windows 10", cpu: "Intel i3-4150", ram: "4GB", gpu: "Intel HD 3000", storage: "20GB" },
+      rec: { os: "Windows 10/11", cpu: "Intel i3-4150+", ram: "4GB", gpu: "GTX 1050 Ti", storage: "20GB SSD" }
+    },
+    developer: "Riot Games", publisher: "Riot Games", releaseDate: "2 يونيو 2020",
+    reviews: [
+      { source: "Metacritic", score: "80/100" },
+      { source: "IGN", score: "9/10" }
+    ],
+    userReviews: [
+      { user: "يوسف", avatar: "ي", rating: 5, date: "2026-08-03", text: "أفضل shooter تكتيكي مجاني!" }
+    ],
+    description: "لعبة shooter تكتيكي 5v5 من Riot Games مع قدرات فريدة لكل شخصية."
+  },
+  {
+    id: 3, name: "Minecraft", platform: "All", price: 29.99, free: false, image: "⛏️", genre: "Sandbox",
+    officialWebsite: "https://www.minecraft.net",
+    storeLinks: [
+      { store: "Minecraft.net", price: "$29.99", url: "https://www.minecraft.net" },
+      { store: "Microsoft Store", price: "$29.99", url: "https://www.microsoft.com/store" }
+    ],
+    versions: [
+      { name: "Java Edition", releaseDate: "2011", pros: ["Mods غير محدودة", "سيرفرات مخصصة", "تحديثات أولاً"], cons: ["لا يدعم cross-play مع Bedrock", "يحتاج Java"], differences: "للـ PC فقط، دعم Mods كامل" },
+      { name: "Bedrock Edition", releaseDate: "2017", pros: ["Cross-play", "يعمل على كل المنصات", "أداء أفضل"], cons: ["Mods محدودة", "سيرفرات Realms مدفوعة"], differences: "يعمل على PC/Console/Mobile مع cross-play" },
+      { name: "Education Edition", releaseDate: "2016", pros: ["مجاني للمدارس", "أدوات تعليمية"], cons: ["للمدارس فقط", "محدود"], differences: "للاستخدام التعليمي فقط" }
+    ],
+    systemRequirements: {
+      min: { os: "Windows 10", cpu: "Intel Core i3-3210", ram: "4GB", gpu: "Intel HD 4000", storage: "1GB" },
+      rec: { os: "Windows 10/11", cpu: "Intel Core i5-4690", ram: "8GB", gpu: "GTX 700 Series", storage: "4GB SSD" }
+    },
+    developer: "Mojang Studios", publisher: "Microsoft", releaseDate: "18 نوفمبر 2011",
+    reviews: [
+      { source: "Metacritic", score: "93/100" },
+      { source: "IGN", score: "9/10" }
+    ],
+    userReviews: [
+      { user: "نور", avatar: "ن", rating: 5, date: "2026-08-01", text: "لعبة الخالدة! Java أفضل للـ Mods." }
+    ],
+    description: "لعبة sandbox الأشهر في التاريخ مع عوالم لانهائية وإبداع غير محدود."
+  },
+  {
+    id: 4, name: "Cyberpunk 2077", platform: "PC/PS/Xbox", price: 59.99, free: false, image: "🌃", genre: "RPG",
+    officialWebsite: "https://www.cyberpunk.net",
+    storeLinks: [
+      { store: "Steam", price: "$59.99", url: "https://store.steampowered.com/app/1091500" },
+      { store: "GOG", price: "$59.99", url: "https://www.gog.com/game/cyberpunk_2077" },
+      { store: "PlayStation Store", price: "$59.99", url: "https://store.playstation.com" }
+    ],
+    versions: [
+      { name: "Cyberpunk 2077", releaseDate: "2020", pros: ["عالم Night City الرائع", "قصة عميقة"], cons: ["bugs عند الإطلاق", "يحتاج جهاز قوي"], differences: "الإصدار الأصلي" },
+      { name: "Phantom Liberty Edition", releaseDate: "2023", pros: ["يتضمن DLC Phantom Liberty", "تحديث 2.0 مجاني"], cons: ["أغلى"], differences: "يتضمن التوسعة الكبرى Phantom Liberty" }
+    ],
+    systemRequirements: {
+      min: { os: "Windows 10", cpu: "Intel i5-3570K / Ryzen 3 2300X", ram: "8GB", gpu: "GTX 970 / RX 470", storage: "70GB" },
+      rec: { os: "Windows 11", cpu: "Intel i7-12700 / Ryzen 7 7800X3D", ram: "16GB", gpu: "RTX 4060 / RX 7600 XT", storage: "70GB SSD" }
+    },
+    developer: "CD Projekt Red", publisher: "CD Projekt", releaseDate: "10 ديسمبر 2020",
+    reviews: [
+      { source: "Metacritic", score: "86/100" },
+      { source: "IGN", score: "9/10" }
+    ],
+    userReviews: [
+      { user: "رامي", avatar: "ر", rating: 4, date: "2026-08-07", text: "بعد التحديثات أصبحت رائعة، Phantom Liberty مذهل." }
+    ],
+    description: "لعبة RPG عالم مفتوح في مستقبل Cyberpunk مع قصة عميقة وتقنيات Ray Tracing."
+  }
+];
+
+const animeList = [
+  {
+    id: 0, title: "Attack on Titan", studio: "MAPPA", episodes: 87, image: "🗡️", genre: "Action", rating: 9.1, releaseYear: 2013,
+    streamingSites: {
+      legal: [
+        { name: "Crunchyroll", url: "https://www.crunchyroll.com", price: "مجاني (مع إعلانات) / $7.99/شهر", quality: "1080p", arabicSub: true },
+        { name: "Netflix", url: "https://www.netflix.com", price: "$9.99/شهر", quality: "4K", arabicSub: true },
+        { name: "Funimation", url: "https://www.funimation.com", price: "$5.99/شهر", quality: "1080p", arabicSub: false }
+      ],
+      illegal: [
+        { name: "9anime", url: "https://9anime.to", warning: "إعلانات مخادعة كثيرة، احتمال وجود برمجيات خبيثة", risk: "عالي" },
+        { name: "Gogoanime", url: "https://gogoanime.io", warning: "نوافذ منبثقة مزعجة، جودة متفاوتة", risk: "متوسط" },
+        { name: "AnimeHeaven", url: "https://animeheaven.ru", warning: "إعلانات غير مناسبة، بطء في التحميل", risk: "متوسط" }
+      ]
+    },
+    officialSites: [
+      { name: "موقع رسمي", url: "https://shingeki.tv" },
+      { name: "Twitter رسمي", url: "https://twitter.com/anime_shingeki" }
+    ],
+    socialMedia: { twitter: "@anime_shingeki", instagram: "@shingeki.tv" },
+    description: "البشرية محاصرة داخل جدران ضخمة لحمايتها من عملاقة آكلة للبشر. Eren Yeager ينضم للجيش لمحاربة العمالقة."
+  },
+  {
+    id: 1, title: "Demon Slayer", studio: "Ufotable", episodes: 55, image: "⚔️", genre: "Action", rating: 8.7, releaseYear: 2019,
+    streamingSites: {
+      legal: [
+        { name: "Crunchyroll", url: "https://www.crunchyroll.com", price: "مجاني (مع إعلانات) / $7.99/شهر", quality: "1080p", arabicSub: true },
+        { name: "Netflix", url: "https://www.netflix.com", price: "$9.99/شهر", quality: "4K", arabicSub: true }
+      ],
+      illegal: [
+        { name: "9anime", url: "https://9anime.to", warning: "إعلانات مخادعة", risk: "عالي" },
+        { name: "Zoro.to", url: "https://zoro.to", warning: "تغيير الدومينات باستمرار", risk: "متوسط" }
+      ]
+    },
+    officialSites: [
+      { name: "موقع رسمي", url: "https://kimetsu.com" }
+    ],
+    socialMedia: { twitter: "@kimetsu_off" },
+    description: "Tanjiro يصبح قاتل شياطين لإنقاذ أخته Nezuko التي تحولت إلى شيطان."
+  },
+  {
+    id: 2, title: "One Piece", studio: "Toei Animation", episodes: "1000+", image: "🏴‍☠️", genre: "Adventure", rating: 8.9, releaseYear: 1999,
+    streamingSites: {
+      legal: [
+        { name: "Crunchyroll", url: "https://www.crunchyroll.com", price: "مجاني (مع إعلانات) / $7.99/شهر", quality: "1080p", arabicSub: true },
+        { name: "Netflix", url: "https://www.netflix.com", price: "$9.99/شهر", quality: "1080p", arabicSub: true },
+        { name: "Funimation", url: "https://www.funimation.com", price: "$5.99/شهر", quality: "1080p", arabicSub: false }
+      ],
+      illegal: [
+        { name: "9anime", url: "https://9anime.to", warning: "إعلانات كثيرة", risk: "عالي" },
+        { name: "Gogoanime", url: "https://gogoanime.io", warning: "جودة متفاوتة", risk: "متوسط" }
+      ]
+    },
+    officialSites: [
+      { name: "موقع رسمي", url: "https://one-piece.com" },
+      { name: "YouTube رسمي", url: "https://youtube.com/onepiece" }
+    ],
+    socialMedia: { twitter: "@Eiichiro_Staff", youtube: "OnePiece" },
+    description: "Luffy وطاقمه يبحثون عن كنز One Piece ليصبحوا ملوك القراصنة."
+  },
+  {
+    id: 3, title: "Jujutsu Kaisen", studio: "MAPPA", episodes: 47, image: "👊", genre: "Action", rating: 8.6, releaseYear: 2020,
+    streamingSites: {
+      legal: [
+        { name: "Crunchyroll", url: "https://www.crunchyroll.com", price: "مجاني (مع إعلانات) / $7.99/شهر", quality: "1080p", arabicSub: true }
+      ],
+      illegal: [
+        { name: "9anime", url: "https://9anime.to", warning: "إعلانات مخادعة", risk: "عالي" }
+      ]
+    },
+    officialSites: [
+      { name: "موقع رسمي", url: "https://jujutsukaisen.jp" }
+    ],
+    socialMedia: { twitter: "@jujutsu_PR" },
+    description: "Yuji Itadori يبتلع إصبعاً ملعوناً وينضم لمدرسة Jujutsu لمحاربة الأرواح الملعونة."
+  },
+  {
+    id: 4, title: "Spy x Family", studio: "Wit Studio & CloverWorks", episodes: 37, image: "🕵️", genre: "Comedy", rating: 8.5, releaseYear: 2022,
+    streamingSites: {
+      legal: [
+        { name: "Crunchyroll", url: "https://www.crunchyroll.com", price: "مجاني (مع إعلانات) / $7.99/شهر", quality: "1080p", arabicSub: true },
+        { name: "Netflix", url: "https://www.netflix.com", price: "$9.99/شهر", quality: "1080p", arabicSub: true }
+      ],
+      illegal: [
+        { name: "9anime", url: "https://9anime.to", warning: "إعلانات", risk: "عالي" }
+      ]
+    },
+    officialSites: [
+      { name: "موقع رسمي", url: "https://spy-family.net" }
+    ],
+    socialMedia: { twitter: "@spyfamily_anime" },
+    description: "جاسوس يتبنى فتاة قارئة أفكار ويتزوج قاتلة محترفة دون أن يعرفا سر بعضهما."
+  }
+];
+
+const services = [
+  { id: 1, name: "صيانة ويندوز عن بُعد", price: 30, priceType: "ثابت", duration: "1-2 ساعة", category: "دعم فني", image: "🖥️", rating: 4.9, bookings: 234, description: "إصلاح مشاكل ويندوز، إزالة الفيروسات، تسريع النظام، وتحديث التعريفات — كل ذلك عن بُعد عبر AnyDesk." },
+  { id: 2, name: "تثبيت لينكس", price: 25, priceType: "ثابت", duration: "1 ساعة", category: "أنظمة تشغيل", image: "🐧", rating: 4.8, bookings: 156, description: "تثبيت Ubuntu أو Mint أو أي توزيعة Linux مع ضبط الإعدادات والبرامج الأساسية." },
+  { id: 3, name: "تسريع جهاز أندرويد", price: 20, priceType: "ثابت", duration: "30 دقيقة", category: "صيانة", image: "📱", rating: 4.7, bookings: 89, description: "إزالة bloatware، تثبيت ROM مخصص، وتحسين الأداء للأجهزة البطيئة." },
+  { id: 4, name: "بناء موقع ويب بالذكاء الاصطناعي", price: 500, priceType: "ثابت", duration: "3-5 أيام", category: "برمجة", image: "🤖", rating: 4.9, bookings: 45, description: "تصميم وتطوير موقع ويب كامل باستخدام أدوات AI مع دعم فني لمدة شهر." }
+];
+
+const aiTools = [
+  { name: "ChatGPT", category: "كتابة", pricing: "Freemium", image: "💬", rating: 4.9, description: "مساعد ذكاء اصطناعي متعدد الاستخدامات للكتابة والبرمجة والبحث.", features: ["GPT-4o", "صور", "برمجة", "تحليل ملفات"], officialWebsite: "https://chat.openai.com" },
+  { name: "Midjourney", category: "صور", pricing: "Paid", image: "🎨", rating: 4.8, description: "أفضل أداة لتوليد الصور الفنية بجودة احترافية.", features: ["صور 4K", "أنمي", "واقعية", "تعديل"], officialWebsite: "https://www.midjourney.com" },
+  { name: "Claude", category: "كتابة", pricing: "Freemium", image: "🧠", rating: 4.7, description: "مساعد AI من Anthropic مع قدرات تحليل ملفات PDF وصور.", features: ["Claude 3.5", "PDF", "برمجة", "منطق"], officialWebsite: "https://claude.ai" },
+  { name: "GitHub Copilot", category: "برمجة", pricing: "Paid", image: "💻", rating: 4.8, description: "مساعد برمجي يكمل الكود تلقائياً في VS Code.", features: ["إكمال تلقائي", "Chat", "Terminal", "PR"], officialWebsite: "https://github.com/features/copilot" },
+  { name: "Runway ML", category: "فيديو", pricing: "Freemium", image: "🎬", rating: 4.6, description: "توليد وتعديل الفيديوهات بالذكاء الاصطناعي.", features: ["Gen-3", "Inpainting", "Motion", "Lip Sync"], officialWebsite: "https://runwayml.com" },
+  { name: "ElevenLabs", category: "صوت", pricing: "Freemium", image: "🎙️", rating: 4.7, description: "توليد أصوات واقعية وتحويل النص لكلام.", features: ["أصوات عربية", "Clone", "API", "Projects"], officialWebsite: "https://elevenlabs.io" },
+  { name: "Perplexity", category: "بحث", pricing: "Free", image: "🔍", rating: 4.5, description: "محرك بحث ذكي يجيب بمصادر موثوقة.", features: ["مصادر", "Pro Search", "ملفات", "Threads"], officialWebsite: "https://www.perplexity.ai" },
+  { name: "DALL-E 3", category: "صور", pricing: "Paid", image: "🖼️", rating: 4.7, description: "توليد صور من OpenAI متكامل مع ChatGPT.", features: ["دقة عالية", "نصوص", "تعديل", "متنوع"], officialWebsite: "https://openai.com/dall-e-3" },
+  { name: "Stable Diffusion", category: "صور", pricing: "Free", image: "🌟", rating: 4.6, description: "نموذج مفتوح المصدر لتوليد الصور محلياً.", features: ["مجاني", "محلي", "ControlNet", "LoRA"], officialWebsite: "https://stability.ai" }
+];
+
+const newsList = [
+  { title: "Google تطلق Gemini 2.5 مع قدرات برمجية متقدمة", category: "AI", date: "14 أغسطس", image: "🤖", description: "Gemini 2.5 يتفوق على GPT-5 في اختبارات البرمجة مع دعم 2 مليون token." },
+  { title: "Windows 12 قادم بميزات ذكاء اصطناعي مدمجة", category: "أنظمة تشغيل", date: "13 أغسطس", image: "🪟", description: "مايكروسوفت تخطط لإطلاق Windows 12 في 2027 مع Copilot مدمج في النواة." },
+  { title: "PlayStation 6: تسريبات جديدة عن المواصفات", category: "ألعاب", date: "12 أغسطس", image: "🎮", description: "PS6 قد يأتي بمعالج AMD Zen 5 ودعم 8K حقيقي بحسب براءات اختراع مسربة." },
+  { title: "ثغرة أمنية خطيرة في Chrome تستهدف المستخدمين", category: "أمن", date: "11 أغسطس", image: "🔒", description: "Google تصدر تحديثاً طارئاً لـ Chrome لإصلاح ثغرة zero-day تُستغل فعلياً." },
+  { title: "OpenAI تخفض أسعار GPT-5 للمطورين", category: "AI", date: "10 أغسطس", image: "💰", description: "تخفيضات تصل إلى 50% على API GPT-5 لجذب المزيد من المطورين." },
+  { title: "Samsung تكشف عن Galaxy S27 بشاشة قابلة للطي", category: "أجهزة", date: "9 أغسطس", image: "📱", description: "تسريبات تكشف عن تصميم ثوري لـ Galaxy S27 مع شاشة تطوي مرتين." }
+];
+
+const freelancePlatforms = [
+  { name: "Mostaql", type: "عربي", description: "أكبر منصة عمل حر عربية مع آلاف المشاريع اليومية.", image: "🇸🇦", url: "mostaql.com", fees: "20% على المستقل" },
+  { name: "Upwork", type: "عالمي", description: "منصة عالمية ضخمة للعمل الحر في كل المجالات.", image: "🌍", url: "upwork.com", fees: "5-20% على المستقل" },
+  { name: "Fiverr", type: "عالمي", description: "خدمات مصغرة تبدأ من 5$ في التصميم والبرمجة والتسويق.", image: "💰", url: "fiverr.com", fees: "20% على البائع" },
+  { name: "Khamsat", type: "عربي", description: "خدمات عربية مصغرة تبدأ من 5$ — الأشهر في الوطن العربي.", image: "🇵🇸", url: "khamsat.com", fees: "20% على البائع" },
+  { name: "Freelancer", type: "عالمي", description: "منافسات ومشاريع مع دعم 50+ مليون مستخدم.", image: "🏆", url: "freelancer.com", fees: "10% على المستقل" },
+  { name: "Nafezly", type: "عربي", description: "منصة عربية للمستقلين مع تركيز على التقنية والتصميم.", image: "🇪🇬", url: "nafezly.com", fees: "15% على المستقل" }
+];
+
+let communityPosts = [
+  { id: 1, user: "أحمد", avatar: "أ", title: "أفضل توزيعة Linux للمبتدئين؟", content: "أريد الانتقال من Windows إلى Linux. ما هي أفضل توزيعة للمبتدئين وهل Mint أفضل من Ubuntu؟", category: "أنظمة", likes: 24, comments: [{ user: "سارة", text: "Mint أفضل لأنها أخف وأشبه بـ Windows." }, { user: "خالد", text: "Ubuntu دعمها أطول والمجتمع أكبر." }], date: "2026-08-15" },
+  { id: 2, user: "ليلى", avatar: "ل", title: "Elden Ring تستحق الشراء؟", content: "شفت إعلانات كثيرة عن Elden Ring. هل هي صعبة جداً للاعب عادي؟", category: "ألعاب", likes: 18, comments: [{ user: "عمر", text: "نعم تستحق! الصعوبة ممتعة وليست unfair." }], date: "2026-08-14" },
+  { id: 3, user: "محمد", avatar: "م", title: "مواقع أنمي قانونية مع ترجمة عربية", content: "جمعت لكم قائمة بأفضل المواقع القانونية لمشاهدة الأنمي مع ترجمة عربية.", category: "أنمي", likes: 45, comments: [{ user: "نور", text: "Crunchyroll أفضلهم بس يحتاج VPN أحياناً." }], date: "2026-08-13" },
+  { id: 4, user: "فاطمة", avatar: "ف", title: "أفضل أداة AI للكتابة بالعربية؟", content: "جربت ChatGPT وClaude. أي أداة تعطي نتائج أفضل باللغة العربية؟", category: "تقنية", likes: 12, comments: [{ user: "يوسف", text: "Claude 3.5 أفضل بالعربي حالياً." }], date: "2026-08-12" }
+];
+
+let notifications = [
+  { id: 1, title: "🎮 Elden Ring بخصم 50%", message: "اللعبة متوفرة الآن بـ $29.99 على Steam!", type: "offer", read: false, date: "2026-08-17" },
+  { id: 2, title: "🆕 تحديث Ubuntu 24.04.2", message: "تحديث أمني مهم متوفر الآن.", type: "update", read: false, date: "2026-08-16" },
+  { id: 3, title: "📺 Attack on Titan الموسم الأخير", message: "الحلقة النهائية متوفرة على Crunchyroll!", type: "anime", read: false, date: "2026-08-15" }
+];
+
+let cart = [];
+let compareList = [];
+let currentLang = 'ar';
+
+// ==================== RENDER FUNCTIONS ====================
+
+function renderProducts(filter = 'all') {
+  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+  document.getElementById('products-grid').innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="aspect-[4/3] flex items-center justify-center text-6xl relative" style="background:var(--bg)">
+        ${p.image}
+        ${p.badge ? `<span class="absolute top-3 right-3 badge badge-accent">${p.badge}</span>` : ''}
+      </div>
+      <div class="p-4">
+        <div class="flex items-center gap-1 mb-2">
+          <span class="text-xs" style="color:var(--warning)"><i class="fas fa-star"></i> ${p.rating}</span>
+          <span class="text-xs" style="color:var(--muted)">(${p.reviews})</span>
+        </div>
+        <h3 class="font-bold mb-2 line-clamp-2 text-sm" style="color:var(--text)">${p.name}</h3>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="font-bold text-lg" style="color:var(--primary)">$${p.price}</span>
+          ${p.oldPrice ? `<span class="line-through text-sm" style="color:var(--muted)">$${p.oldPrice}</span>` : ''}
+        </div>
+        <div class="flex gap-2">
+          <button onclick="addToCart(${p.id})" class="flex-1 btn-primary text-sm py-2">أضف للسلة</button>
+          <button onclick="openProductModal(${p.id})" class="px-3 py-2 rounded-lg border text-sm transition-all" style="border-color:var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'"><i class="fas fa-info-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openProductModal(id) {
+  const p = products.find(x => x.id === id);
+  const content = document.getElementById('product-modal-content');
+  content.innerHTML = `
+    <div class="flex flex-col md:flex-row gap-6">
+      <div class="w-full md:w-1/3">
+        <div class="aspect-square rounded-xl flex items-center justify-center text-7xl md:text-8xl border" style="background:var(--bg);border-color:var(--border)">${p.image}</div>
+        <div class="mt-4 flex gap-2">
+          <a href="${p.officialWebsite}" target="_blank" class="flex-1 btn-primary text-sm py-3 text-center">الموقع الرسمي</a>
+        </div>
+        <button onclick="toggleCompare('product', ${p.id})" class="btn-secondary w-full mt-2 text-sm py-2">
+          <i class="fas fa-balance-scale"></i> ${compareList.find(c => c.type === 'product' && c.id === p.id) ? 'إزالة من المقارنة' : 'أضف للمقارنة'}
+        </button>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge badge-primary">${p.category}</span>
+          ${p.badge ? `<span class="badge badge-accent">${p.badge}</span>` : ''}
+          <span class="text-xs" style="color:var(--warning)"><i class="fas fa-star"></i> ${p.rating} (${p.reviews} تقييم)</span>
+        </div>
+        <h2 class="text-2xl font-black mb-2" style="color:var(--text)">${p.name}</h2>
+        <p class="text-sm mb-4" style="color:var(--muted)">${p.description}</p>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-industry" style="color:var(--primary)"></i> معلومات الصانع</h4>
+          <div class="detail-row"><span class="detail-label">الشركة المصنعة</span><span class="detail-value">${p.manufacturer}</span></div>
+          <div class="detail-row"><span class="detail-label">بلد الصنع</span><span class="detail-value">${p.country}</span></div>
+          <div class="detail-row"><span class="detail-label">نوع المنتج</span><span class="detail-value">${p.productType}</span></div>
+          <div class="detail-row"><span class="detail-label">التصنيف</span><span class="detail-value">${p.classification}</span></div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-globe" style="color:var(--primary)"></i> التوفر</h4>
+          <div class="detail-row"><span class="detail-label">متوفر في الدول العربية</span><span class="detail-value" style="color:${p.availableArab ? 'var(--success)' : 'var(--accent)'}">${p.availableArab ? '✓ نعم' : '✗ لا'}</span></div>
+          <div class="detail-row"><span class="detail-label">متوفر في دولتك</span><span class="detail-value" style="color:${p.availableInUserCountry ? 'var(--success)' : 'var(--accent)'}">${p.availableInUserCountry ? '✓ نعم' : '✗ لا'}</span></div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-link" style="color:var(--primary)"></i> المصادر والروابط</h4>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <a href="${p.officialWebsite}" target="_blank" class="price-tag" style="border-color:var(--primary);color:var(--primary)"><i class="fas fa-globe"></i> الموقع الرسمي</a>
+            ${p.socialLinks.facebook ? `<a href="${p.socialLinks.facebook}" target="_blank" class="price-tag"><i class="fab fa-facebook"></i> فيسبوك</a>` : ''}
+            ${p.socialLinks.instagram ? `<a href="${p.socialLinks.instagram}" target="_blank" class="price-tag"><i class="fab fa-instagram"></i> إنستغرام</a>` : ''}
+            ${p.socialLinks.twitter ? `<a href="${p.socialLinks.twitter}" target="_blank" class="price-tag"><i class="fab fa-twitter"></i> تويتر</a>` : ''}
+          </div>
+          <div class="mb-2"><span class="text-xs font-bold" style="color:var(--muted)">مصادر موثوقة:</span></div>
+          <div class="flex flex-wrap gap-2">
+            ${p.trustedSources.map(s => `<a href="${s.url}" target="_blank" class="price-tag" style="border-color:var(--success);color:var(--success)"><i class="fas fa-check-circle"></i> ${s.name}</a>`).join('')}
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-tags" style="color:var(--primary)"></i> مقارنة الأسعار</h4>
+          <div class="grid grid-cols-1 gap-2">
+            ${p.priceComparison.map(pc => `
+              <div class="flex items-center justify-between rounded-lg p-3 border" style="background:var(--bg);border-color:var(--border)">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-sm">${pc.country}</span>
+                  <span class="text-xs" style="color:var(--muted)">(${pc.store})</span>
+                </div>
+                <span class="font-bold text-sm" style="color:var(--primary)">${pc.price}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <button onclick="addToCart(${p.id}); closeProductModal();" class="btn-primary w-full mt-4 py-3">أضف للسلة — $${p.price}</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('product-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function renderServices() {
+  document.getElementById('services-grid').innerHTML = services.map(s => `
+    <div class="service-card">
+      <div class="aspect-video flex items-center justify-center text-5xl" style="background:var(--bg)">${s.image}</div>
+      <div class="p-5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="badge badge-primary text-xs">${s.category}</span>
+          <span class="text-xs" style="color:var(--warning)"><i class="fas fa-star"></i> ${s.rating}</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2" style="color:var(--text)">${s.name}</h3>
+        <p class="text-sm mb-4" style="color:var(--muted)">${s.description}</p>
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="font-bold text-xl" style="color:var(--primary)">$${s.price}</span>
+            <span class="text-xs" style="color:var(--muted)"> / ${s.priceType}</span>
+          </div>
+          <button onclick="showToast('سيتم فتح صفحة الحجز قريباً', 'info')" class="btn-primary text-sm py-2 px-4">احجز الآن</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderOS() {
+  document.getElementById('os-grid').innerHTML = osGuides.map((os, idx) => `
+    <div class="os-card p-5" onclick="openOSModal(${idx})">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-3xl border" style="background:var(--bg);border-color:var(--border)">${os.image}</div>
+        <div>
+          <h3 class="font-bold" style="color:var(--text)">${os.name}</h3>
+          <p class="text-xs" style="color:var(--muted)">${os.developer}</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-4">
+        ${os.free ? '<span class="badge badge-success">مجاني</span>' : '<span class="badge badge-primary">رسمي</span>'}
+        <span class="badge badge-muted">RAM: ${os.ram}</span>
+      </div>
+      <div class="text-sm mb-4" style="color:var(--muted)">Storage: ${os.storage}</div>
+      <button class="w-full py-2 rounded-lg border text-sm transition-all" style="border-color:var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">التفاصيل الكاملة</button>
+    </div>
+  `).join('');
+}
+
+function openOSModal(idx) {
+  const os = osGuides[idx];
+  const content = document.getElementById('os-modal-content');
+  const reviewsHtml = os.userReviews ? os.userReviews.map(r => `
+    <div class="review-item">
+      <div class="review-header">
+        <div class="review-avatar">${r.avatar}</div>
+        <div><div class="font-bold text-sm" style="color:var(--text)">${r.user}</div><div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div></div>
+        <span class="mr-auto text-xs" style="color:var(--muted)">${r.date}</span>
+      </div>
+      <div class="review-text">${r.text}</div>
+    </div>
+  `).join('') : '';
+
+  content.innerHTML = `
+    <div class="flex flex-col md:flex-row gap-6">
+      <div class="w-full md:w-1/3">
+        <div class="aspect-square rounded-xl flex items-center justify-center text-7xl md:text-8xl border" style="background:var(--bg);border-color:var(--border)">${os.image}</div>
+        <div class="mt-4 flex gap-2">
+          <a href="${os.officialWebsite}" target="_blank" class="flex-1 btn-primary text-sm py-3 text-center">الموقع الرسمي</a>
+        </div>
+        <button onclick="toggleCompare('os', ${idx})" class="btn-secondary w-full mt-2 text-sm py-2">
+          <i class="fas fa-balance-scale"></i> ${compareList.find(c => c.type === 'os' && c.id === idx) ? 'إزالة من المقارنة' : 'أضف للمقارنة'}
+        </button>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge badge-primary">${os.category}</span>
+          ${os.free ? '<span class="badge badge-success">مجاني</span>' : '<span class="badge badge-accent">رسمي</span>'}
+        </div>
+        <h2 class="text-2xl font-black mb-2" style="color:var(--text)">${os.name}</h2>
+        <p class="text-sm mb-4" style="color:var(--muted)">${os.description}</p>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-microchip" style="color:var(--primary)"></i> متطلبات الجهاز</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="text-xs font-bold mb-2" style="color:var(--muted)">الحد الأدنى</div>
+              <div class="detail-row"><span class="detail-label">معالج</span><span class="detail-value">${os.systemRequirements.min.cpu}</span></div>
+              <div class="detail-row"><span class="detail-label">ذاكرة</span><span class="detail-value">${os.systemRequirements.min.ram}</span></div>
+              <div class="detail-row"><span class="detail-label">تخزين</span><span class="detail-value">${os.systemRequirements.min.storage}</span></div>
+              <div class="detail-row"><span class="detail-label">كرت شاشة</span><span class="detail-value">${os.systemRequirements.min.gpu}</span></div>
+              <div class="detail-row"><span class="detail-label">شاشة</span><span class="detail-value">${os.systemRequirements.min.display}</span></div>
+              <div class="detail-row"><span class="detail-label">TPM</span><span class="detail-value">${os.systemRequirements.min.tpm}</span></div>
+            </div>
+            <div>
+              <div class="text-xs font-bold mb-2" style="color:var(--primary)">الموصى به</div>
+              <div class="detail-row"><span class="detail-label">معالج</span><span class="detail-value">${os.systemRequirements.rec.cpu}</span></div>
+              <div class="detail-row"><span class="detail-label">ذاكرة</span><span class="detail-value">${os.systemRequirements.rec.ram}</span></div>
+              <div class="detail-row"><span class="detail-label">تخزين</span><span class="detail-value">${os.systemRequirements.rec.storage}</span></div>
+              <div class="detail-row"><span class="detail-label">كرت شاشة</span><span class="detail-value">${os.systemRequirements.rec.gpu}</span></div>
+              <div class="detail-row"><span class="detail-label">شاشة</span><span class="detail-value">${os.systemRequirements.rec.display}</span></div>
+              <div class="detail-row"><span class="detail-label">TPM</span><span class="detail-value">${os.systemRequirements.rec.tpm}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-exclamation-triangle" style="color:var(--accent)"></i> المتطلبات الأساسية (لن يعمل بدونها)</h4>
+          <div class="flex flex-wrap gap-2">
+            ${os.essentialRequirements.map(req => `<span class="badge badge-accent">${req}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-tools" style="color:var(--primary)"></i> طرق بديلة للتشغيل</h4>
+          ${os.alternativeMethods.map(am => `
+            <div class="rounded-lg p-3 border mb-2" style="background:var(--bg);border-color:var(--border)">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-sm" style="color:var(--text)">${am.name}</span>
+                <span class="badge ${am.difficulty === 'سهل' ? 'badge-success' : 'badge-warning'}">${am.difficulty}</span>
+              </div>
+              <p class="text-xs" style="color:var(--muted)">${am.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-download" style="color:var(--primary)"></i> روابط التحميل المباشر</h4>
+          ${os.downloadLinks.map(dl => `
+            <div class="flex items-center justify-between rounded-lg p-3 border mb-2" style="background:var(--bg);border-color:var(--border)">
+              <div><div class="font-bold text-sm" style="color:var(--text)">${dl.name}</div><div class="text-xs" style="color:var(--muted)">${dl.size}</div></div>
+              <a href="${dl.url}" target="_blank" class="btn-primary text-xs py-2 px-3"><i class="fas fa-download"></i> تحميل</a>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-list-ol" style="color:var(--primary)"></i> دليل التثبيت خطوة بخطوة</h4>
+          <ol class="space-y-2">
+            ${os.installationGuide.map((step, i) => `<li class="text-sm" style="color:var(--muted)"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold mr-2" style="background:var(--primary);color:white">${i+1}</span>${step}</li>`).join('')}
+          </ol>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-bug" style="color:var(--accent)"></i> الأخطاء الشائعة وحلولها</h4>
+          ${os.commonErrors.map(err => `
+            <div class="rounded-lg p-3 border mb-2" style="background:var(--bg);border-color:var(--border)">
+              <div class="font-bold text-sm mb-1" style="color:var(--accent)"><i class="fas fa-times-circle"></i> ${err.error}</div>
+              <div class="text-sm" style="color:var(--muted)"><i class="fas fa-check-circle" style="color:var(--success)"></i> <strong>الحل:</strong> ${err.solution}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-building" style="color:var(--primary)"></i> معلومات المطور</h4>
+          <div class="detail-row"><span class="detail-label">الشركة</span><span class="detail-value">${os.developerInfo.company}</span></div>
+          <div class="detail-row"><span class="detail-label">سنة التأسيس</span><span class="detail-value">${os.developerInfo.founded}</span></div>
+          <div class="detail-row"><span class="detail-label">المقر</span><span class="detail-value">${os.developerInfo.headquarters}</span></div>
+          <div class="detail-row"><span class="detail-label">المدير التنفيذي</span><span class="detail-value">${os.developerInfo.ceo}</span></div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-code-branch" style="color:var(--primary)"></i> الإصدارات القديمة</h4>
+          ${os.versions.map(v => `
+            <div class="rounded-lg p-4 border mb-3" style="background:var(--bg);border-color:var(--border)">
+              <div class="flex items-center justify-between mb-2"><span class="font-bold" style="color:var(--text)">${v.name}</span><span class="badge badge-muted">${v.releaseDate}</span></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
+                <div><div class="text-xs font-bold mb-1" style="color:var(--success)">✓ المميزات</div><ul class="text-xs space-y-1" style="color:var(--muted)">${v.pros.map(p => `<li>• ${p}</li>`).join('')}</ul></div>
+                <div><div class="text-xs font-bold mb-1" style="color:var(--accent)">✗ العيوب</div><ul class="text-xs space-y-1" style="color:var(--muted)">${v.cons.map(c => `<li>• ${c}</li>`).join('')}</ul></div>
+              </div>
+              <div class="text-xs" style="color:var(--muted)"><strong style="color:var(--text)">الاختلافات:</strong> ${v.differences}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-graduation-cap" style="color:var(--primary)"></i> كورسات مجانية</h4>
+          <div class="flex flex-wrap gap-2">
+            ${os.freeCourses.map(c => `<a href="${c.url}" target="_blank" class="price-tag" style="border-color:var(--success);color:var(--success)"><i class="fas fa-play-circle"></i> ${c.name} (${c.platform})</a>`).join('')}
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-briefcase" style="color:var(--primary)"></i> التخصصات المناسبة</h4>
+          <div class="flex flex-wrap gap-2">
+            ${os.specialties.map(s => `<span class="badge badge-primary">${s}</span>`).join('')}
+          </div>
+        </div>
+
+        ${reviewsHtml ? `<div class="detail-section"><h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-star" style="color:var(--warning)"></i> مراجعات المستخدمين</h4>${reviewsHtml}</div>` : ''}
+      </div>
+    </div>
+  `;
+  document.getElementById('os-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOSModal() {
+  document.getElementById('os-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function renderAI(filter) {
+  const filtered = filter === 'all' ? aiTools : aiTools.filter(t => t.category === filter);
+  document.getElementById('ai-grid').innerHTML = filtered.map(t => `
+    <div class="tool-card p-5">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl border" style="background:var(--bg);border-color:var(--border)">${t.image}</div>
+        <div class="flex-1">
+          <h3 class="font-bold" style="color:var(--text)">${t.name}</h3>
+          <span class="badge badge-primary text-xs">${t.category}</span>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge ${t.pricing === 'Free' ? 'badge-success' : t.pricing === 'Freemium' ? 'badge-primary' : 'badge-accent'}">${t.pricing}</span>
+        <span class="text-sm" style="color:var(--warning)"><i class="fas fa-star"></i> ${t.rating}</span>
+      </div>
+      <p class="text-xs mb-3 line-clamp-2" style="color:var(--muted)">${t.description}</p>
+      <div class="flex flex-wrap gap-1 mb-3">
+        ${t.features.map(f => `<span class="text-[10px] px-2 py-1 rounded border" style="border-color:var(--border);color:var(--muted)">${f}</span>`).join('')}
+      </div>
+      <div class="flex gap-2">
+        <a href="${t.officialWebsite}" target="_blank" class="flex-1 btn-primary text-sm py-2 text-center">جربها</a>
+        <button onclick="showToast('سيتم فتح التفاصيل قريباً', 'info')" class="px-3 py-2 rounded-lg border text-sm transition-all" style="border-color:var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">التفاصيل</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderGames() {
+  document.getElementById('games-grid').innerHTML = games.map((g, idx) => `
+    <div class="game-card" onclick="openGameModal(${idx})">
+      <div class="aspect-[3/4] flex items-center justify-center text-4xl md:text-5xl relative" style="background:var(--bg)">
+        ${g.image}
+        ${g.free ? '<span class="absolute top-2 right-2 badge badge-success text-xs">مجاني</span>' : ''}
+      </div>
+      <div class="p-3">
+        <h3 class="font-bold text-sm mb-1 truncate" style="color:var(--text)">${g.name}</h3>
+        <p class="text-xs mb-2" style="color:var(--muted)">${g.platform}</p>
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-sm" style="color:var(--primary)">${g.free ? 'مجاني' : '$'+g.price}</span>
+          <span class="text-xs" style="color:var(--muted)">${g.genre}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openGameModal(idx) {
+  const g = games[idx];
+  const content = document.getElementById('game-modal-content');
+  const reviewsHtml = g.userReviews ? g.userReviews.map(r => `
+    <div class="review-item">
+      <div class="review-header">
+        <div class="review-avatar">${r.avatar}</div>
+        <div><div class="font-bold text-sm" style="color:var(--text)">${r.user}</div><div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div></div>
+        <span class="mr-auto text-xs" style="color:var(--muted)">${r.date}</span>
+      </div>
+      <div class="review-text">${r.text}</div>
+    </div>
+  `).join('') : '';
+
+  content.innerHTML = `
+    <div class="flex flex-col md:flex-row gap-6">
+      <div class="w-full md:w-1/3">
+        <div class="aspect-[3/4] rounded-xl flex items-center justify-center text-7xl md:text-8xl border" style="background:var(--bg);border-color:var(--border)">${g.image}</div>
+        <div class="mt-4 flex gap-2">
+          <a href="${g.officialWebsite}" target="_blank" class="flex-1 btn-primary text-sm py-3 text-center">الموقع الرسمي</a>
+        </div>
+        <button onclick="toggleCompare('game', ${idx})" class="btn-secondary w-full mt-2 text-sm py-2">
+          <i class="fas fa-balance-scale"></i> ${compareList.find(c => c.type === 'game' && c.id === idx) ? 'إزالة من المقارنة' : 'أضف للمقارنة'}
+        </button>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge badge-primary">${g.genre}</span>
+          ${g.free ? '<span class="badge badge-success">مجاني</span>' : `<span class="badge badge-accent">$${g.price}</span>`}
+        </div>
+        <h2 class="text-2xl font-black mb-2" style="color:var(--text)">${g.name}</h2>
+        <p class="text-sm mb-4" style="color:var(--muted)">${g.description}</p>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-store" style="color:var(--primary)"></i> المتاجر الرسمية</h4>
+          ${g.storeLinks.map(sl => `
+            <div class="flex items-center justify-between rounded-lg p-3 border mb-2" style="background:var(--bg);border-color:var(--border)">
+              <div><div class="font-bold text-sm" style="color:var(--text)">${sl.store}</div><div class="text-xs" style="color:var(--muted)">${sl.price}</div></div>
+              <a href="${sl.url}" target="_blank" class="btn-primary text-xs py-2 px-3"><i class="fas fa-external-link-alt"></i> زيارة</a>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-microchip" style="color:var(--primary)"></i> متطلبات التشغيل</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="text-xs font-bold mb-2" style="color:var(--muted)">الحد الأدنى</div>
+              <div class="detail-row"><span class="detail-label">نظام التشغيل</span><span class="detail-value">${g.systemRequirements.min.os}</span></div>
+              <div class="detail-row"><span class="detail-label">معالج</span><span class="detail-value">${g.systemRequirements.min.cpu}</span></div>
+              <div class="detail-row"><span class="detail-label">ذاكرة</span><span class="detail-value">${g.systemRequirements.min.ram}</span></div>
+              <div class="detail-row"><span class="detail-label">كرت شاشة</span><span class="detail-value">${g.systemRequirements.min.gpu}</span></div>
+              <div class="detail-row"><span class="detail-label">تخزين</span><span class="detail-value">${g.systemRequirements.min.storage}</span></div>
+            </div>
+            <div>
+              <div class="text-xs font-bold mb-2" style="color:var(--primary)">الموصى به</div>
+              <div class="detail-row"><span class="detail-label">نظام التشغيل</span><span class="detail-value">${g.systemRequirements.rec.os}</span></div>
+              <div class="detail-row"><span class="detail-label">معالج</span><span class="detail-value">${g.systemRequirements.rec.cpu}</span></div>
+              <div class="detail-row"><span class="detail-label">ذاكرة</span><span class="detail-value">${g.systemRequirements.rec.ram}</span></div>
+              <div class="detail-row"><span class="detail-label">كرت شاشة</span><span class="detail-value">${g.systemRequirements.rec.gpu}</span></div>
+              <div class="detail-row"><span class="detail-label">تخزين</span><span class="detail-value">${g.systemRequirements.rec.storage}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-code-branch" style="color:var(--primary)"></i> الإصدارات والاختلافات</h4>
+          ${g.versions.map(v => `
+            <div class="rounded-lg p-4 border mb-3" style="background:var(--bg);border-color:var(--border)">
+              <div class="flex items-center justify-between mb-2"><span class="font-bold" style="color:var(--text)">${v.name}</span><span class="badge badge-muted">${v.releaseDate}</span></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
+                <div><div class="text-xs font-bold mb-1" style="color:var(--success)">✓ المميزات</div><ul class="text-xs space-y-1" style="color:var(--muted)">${v.pros.map(p => `<li>• ${p}</li>`).join('')}</ul></div>
+                <div><div class="text-xs font-bold mb-1" style="color:var(--accent)">✗ العيوب</div><ul class="text-xs space-y-1" style="color:var(--muted)">${v.cons.map(c => `<li>• ${c}</li>`).join('')}</ul></div>
+              </div>
+              <div class="text-xs" style="color:var(--muted)"><strong style="color:var(--text)">الاختلافات:</strong> ${v.differences}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-star-half-alt" style="color:var(--warning)"></i> التقييمات</h4>
+          <div class="flex flex-wrap gap-2">
+            ${g.reviews.map(r => `<span class="badge badge-warning">${r.source}: ${r.score}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-building" style="color:var(--primary)"></i> المطور والناشر</h4>
+          <div class="detail-row"><span class="detail-label">المطور</span><span class="detail-value">${g.developer}</span></div>
+          <div class="detail-row"><span class="detail-label">الناشر</span><span class="detail-value">${g.publisher}</span></div>
+          <div class="detail-row"><span class="detail-label">تاريخ الإصدار</span><span class="detail-value">${g.releaseDate}</span></div>
+        </div>
+
+        ${reviewsHtml ? `<div class="detail-section"><h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-star" style="color:var(--warning)"></i> مراجعات اللاعبين</h4>${reviewsHtml}</div>` : ''}
+      </div>
+    </div>
+  `;
+  document.getElementById('game-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGameModal() {
+  document.getElementById('game-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function renderAnime() {
+  document.getElementById('anime-grid').innerHTML = animeList.map((a, idx) => `
+    <div class="anime-card" onclick="openAnimeModal(${idx})">
+      <div class="aspect-[3/4] flex items-center justify-center text-5xl relative" style="background:var(--bg)">
+        ${a.image}
+        <span class="absolute top-2 right-2 badge badge-primary text-xs">${a.genre}</span>
+      </div>
+      <div class="p-3">
+        <h3 class="font-bold text-sm mb-1" style="color:var(--text)">${a.title}</h3>
+        <p class="text-xs mb-2" style="color:var(--muted)">${a.episodes} حلقة | ${a.studio}</p>
+        <div class="flex flex-wrap gap-1">
+          ${a.streamingSites.legal.slice(0,2).map(p => `<span class="text-[10px] px-2 py-1 rounded border" style="border-color:var(--border);color:var(--muted)">${p.name}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openAnimeModal(idx) {
+  const a = animeList[idx];
+  const content = document.getElementById('anime-modal-content');
+  content.innerHTML = `
+    <div class="flex flex-col md:flex-row gap-6">
+      <div class="w-full md:w-1/3">
+        <div class="aspect-[3/4] rounded-xl flex items-center justify-center text-7xl md:text-8xl border" style="background:var(--bg);border-color:var(--border)">${a.image}</div>
+        <div class="mt-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="badge badge-primary">${a.genre}</span>
+            <span class="badge badge-warning">⭐ ${a.rating}</span>
+          </div>
+          <div class="detail-row"><span class="detail-label">الاستوديو</span><span class="detail-value">${a.studio}</span></div>
+          <div class="detail-row"><span class="detail-label">الحلقات</span><span class="detail-value">${a.episodes}</span></div>
+          <div class="detail-row"><span class="detail-label">سنة الإصدار</span><span class="detail-value">${a.releaseYear}</span></div>
+        </div>
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl font-black mb-2" style="color:var(--text)">${a.title}</h2>
+        <p class="text-sm mb-4" style="color:var(--muted)">${a.description}</p>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-check-circle" style="color:var(--success)"></i> منصات قانونية</h4>
+          ${a.streamingSites.legal.map(site => `
+            <div class="flex items-center justify-between rounded-lg p-3 border mb-2" style="background:var(--bg);border-color:var(--border)">
+              <div>
+                <div class="font-bold text-sm" style="color:var(--text)">${site.name}</div>
+                <div class="text-xs" style="color:var(--muted)">${site.price} | جودة: ${site.quality} ${site.arabicSub ? '| ترجمة عربية ✅' : ''}</div>
+              </div>
+              <a href="${site.url}" target="_blank" class="btn-primary text-xs py-2 px-3"><i class="fas fa-play"></i> مشاهدة</a>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="warning-box mb-4">
+          <i class="fas fa-exclamation-triangle"></i> <strong>تحذير أمان:</strong> المواقع غير القانونية أدناه قد تحتوي على إعلانات مخادعة وبرمجيات خبيثة. ننصح بشدة باستخدام المنصات القانونية أعلاه.
+        </div>
+
+        <div class="detail-section" style="border-color:rgba(233,69,96,0.3)">
+          <h4 class="font-bold mb-3" style="color:var(--accent)"><i class="fas fa-exclamation-triangle"></i> مواقع غير قانونية (مع تحذير)</h4>
+          ${a.streamingSites.illegal.map(site => `
+            <div class="rounded-lg p-3 border mb-2" style="background:rgba(233,69,96,0.05);border-color:rgba(233,69,96,0.2)">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-sm" style="color:var(--accent)">${site.name}</span>
+                <span class="badge badge-accent">مخاطر: ${site.risk}</span>
+              </div>
+              <p class="text-xs" style="color:var(--muted)"><i class="fas fa-shield-alt" style="color:var(--accent)"></i> ${site.warning}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="detail-section">
+          <h4 class="font-bold mb-3" style="color:var(--text)"><i class="fas fa-link" style="color:var(--primary)"></i> المواقع والتواصل الرسمي</h4>
+          <div class="flex flex-wrap gap-2">
+            ${a.officialSites.map(s => `<a href="${s.url}" target="_blank" class="price-tag" style="border-color:var(--primary);color:var(--primary)"><i class="fas fa-globe"></i> ${s.name}</a>`).join('')}
+            ${a.socialMedia.twitter ? `<a href="https://twitter.com/${a.socialMedia.twitter.replace('@','')}" target="_blank" class="price-tag"><i class="fab fa-twitter"></i> ${a.socialMedia.twitter}</a>` : ''}
+            ${a.socialMedia.youtube ? `<a href="https://youtube.com/${a.socialMedia.youtube}" target="_blank" class="price-tag"><i class="fab fa-youtube"></i> ${a.socialMedia.youtube}</a>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('anime-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAnimeModal() {
+  document.getElementById('anime-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function renderFreelance() {
+  document.getElementById('freelance-grid').innerHTML = freelancePlatforms.map(f => `
+    <div class="freelance-card p-5">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="text-4xl">${f.image}</div>
+        <div>
+          <h3 class="font-bold" style="color:var(--text)">${f.name}</h3>
+          <span class="badge ${f.type === 'عربي' ? 'badge-success' : 'badge-primary'} text-xs">${f.type}</span>
+        </div>
+      </div>
+      <p class="text-sm mb-4" style="color:var(--muted)">${f.description}</p>
+      <div class="detail-row text-xs mb-3"><span class="detail-label">رسوم المنصة</span><span class="detail-value">${f.fees}</span></div>
+      <button onclick="window.open('https://${f.url}', '_blank')" class="w-full py-2 rounded-lg border text-sm transition-all" style="border-color:var(--border);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">زيارة الموقع</button>
+    </div>
+  `).join('');
+}
+
+function renderNews() {
+  document.getElementById('news-grid').innerHTML = newsList.map(n => `
+    <div class="news-card">
+      <div class="aspect-video flex items-center justify-center text-4xl" style="background:var(--bg)">${n.image}</div>
+      <div class="p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge badge-primary text-xs">${n.category}</span>
+          <span class="text-xs" style="color:var(--muted)">${n.date}</span>
+        </div>
+        <h3 class="font-bold mb-3 line-clamp-2" style="color:var(--text)">${n.title}</h3>
+        <p class="text-xs mb-3 line-clamp-2" style="color:var(--muted)">${n.description}</p>
+        <button onclick="showToast('سيتم فتح الخبر قريباً', 'info')" class="text-sm hover:underline" style="color:var(--primary)">اقرأ المزيد <i class="fas fa-arrow-left mr-1"></i></button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCommunity(filter = 'all') {
+  const filtered = filter === 'all' ? communityPosts : communityPosts.filter(p => p.category === filter);
+  document.getElementById('community-posts').innerHTML = filtered.map(post => `
+    <div class="community-post">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="review-avatar">${post.avatar}</div>
+        <div>
+          <div class="font-bold text-sm" style="color:var(--text)">${post.user}</div>
+          <div class="text-xs" style="color:var(--muted)">${post.date} | <span class="badge badge-primary text-[10px]">${post.category}</span></div>
+        </div>
+      </div>
+      <h3 class="font-bold mb-2" style="color:var(--text)">${post.title}</h3>
+      <p class="text-sm mb-3" style="color:var(--muted)">${post.content}</p>
+      <div class="flex items-center gap-4 mb-3">
+        <button onclick="likePost(${post.id})" class="text-sm flex items-center gap-1" style="color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-heart"></i> ${post.likes}</button>
+        <button onclick="toggleComments(${post.id})" class="text-sm flex items-center gap-1" style="color:var(--muted)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-comment"></i> ${post.comments.length}</button>
+      </div>
+      <div id="comments-${post.id}" class="hidden">
+        ${post.comments.map(c => `<div class="comment-box"><span class="font-bold text-sm" style="color:var(--text)">${c.user}:</span> <span style="color:var(--muted)">${c.text}</span></div>`).join('')}
+        <div class="flex gap-2 mt-2">
+          <input type="text" id="comment-input-${post.id}" placeholder="أضف تعليقاً..." class="flex-1 text-sm" style="padding:8px 12px">
+          <button onclick="addComment(${post.id})" class="btn-primary text-sm py-2 px-3">نشر</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Trending posts
+  const trending = [...communityPosts].sort((a,b) => b.likes - a.likes).slice(0,3);
+  document.getElementById('trending-posts').innerHTML = trending.map(post => `
+    <div class="flex items-start gap-3 mb-3 cursor-pointer" onclick="toggleComments(${post.id})">
+      <div class="review-avatar text-xs">${post.avatar}</div>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text)">${post.title}</div>
+        <div class="text-xs" style="color:var(--muted)">${post.likes} إعجاب • ${post.comments.length} تعليق</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function likePost(id) {
+  const post = communityPosts.find(p => p.id === id);
+  if (post) { post.likes++; renderCommunity(); }
+}
+
+function toggleComments(id) {
+  const el = document.getElementById(`comments-${id}`);
+  if (el) el.classList.toggle('hidden');
+}
+
+function addComment(postId) {
+  const input = document.getElementById(`comment-input-${postId}`);
+  if (input && input.value.trim()) {
+    const post = communityPosts.find(p => p.id === postId);
+    if (post) {
+      post.comments.push({ user: "أنت", text: input.value.trim() });
+      renderCommunity();
+      showToast('تم إضافة التعليق', 'success');
+    }
+  }
+}
+
+function addCommunityPost() {
+  const title = document.getElementById('post-title').value;
+  const category = document.getElementById('post-category').value;
+  const content = document.getElementById('post-content').value;
+  if (title && category && content) {
+    communityPosts.unshift({
+      id: Date.now(), user: "أنت", avatar: "أنت", title, content, category,
+      likes: 0, comments: [], date: new Date().toISOString().split('T')[0]
+    });
+    document.getElementById('post-title').value = '';
+    document.getElementById('post-category').value = '';
+    document.getElementById('post-content').value = '';
+    renderCommunity();
+    showToast('تم نشر المنشور بنجاح!', 'success');
+  }
+}
+
+function filterCommunity(category) {
+  renderCommunity(category);
+  document.querySelectorAll('[data-cfilter]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cfilter === category);
+  });
+}
+
+// ==================== CART FUNCTIONS ====================
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  const existing = cart.find(item => item.id === productId);
+  if (existing) existing.quantity++;
+  else cart.push({ ...product, quantity: 1 });
+  updateCartUI();
+  showToast(`تمت إضافة "${product.name}" للسلة`, 'success');
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  updateCartUI();
+}
+
+function updateQuantity(productId, delta) {
+  const item = cart.find(item => item.id === productId);
+  if (item) {
+    item.quantity += delta;
+    if (item.quantity <= 0) removeFromCart(productId);
+    else updateCartUI();
+  }
+}
+
+function updateCartUI() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-title-count').textContent = `(${count})`;
+
+  const itemsContainer = document.getElementById('cart-items');
+  const footer = document.getElementById('cart-footer');
+
+  if (cart.length === 0) {
+    itemsContainer.innerHTML = `
+      <div class="text-center py-12">
+        <i class="fas fa-shopping-cart text-6xl mb-4" style="color:var(--border)"></i>
+        <p style="color:var(--muted)">سلة التسوق فارغة</p>
+        <button onclick="toggleCart(); scrollToSection('store');" class="btn-primary mt-4">تصفح المتجر</button>
+      </div>`;
+    footer.classList.add('hidden');
+  } else {
+    itemsContainer.innerHTML = cart.map(item => `
+      <div class="flex gap-4 mb-4 pb-4 border-b" style="border-color:var(--border)">
+        <div class="w-20 h-20 rounded-lg flex items-center justify-center text-3xl flex-shrink-0" style="background:var(--bg)">${item.image}</div>
+        <div class="flex-1">
+          <h4 class="font-bold text-sm mb-1" style="color:var(--text)">${item.name}</h4>
+          <p class="font-bold" style="color:var(--primary)">$${item.price}</p>
+          <div class="flex items-center gap-3 mt-2">
+            <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 rounded-lg border flex items-center justify-center transition-all" style="border-color:var(--border);background:var(--surface);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">-</button>
+            <span class="font-bold">${item.quantity}</span>
+            <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 rounded-lg border flex items-center justify-center transition-all" style="border-color:var(--border);background:var(--surface);color:var(--text)" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">+</button>
+            <button onclick="removeFromCart(${item.id})" class="mr-auto" style="color:var(--muted)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById('cart-subtotal').textContent = `$${total}`;
+    document.getElementById('cart-total').textContent = `$${total}`;
+    footer.classList.remove('hidden');
+  }
+}
+
+// ==================== COMPARE FUNCTIONS ====================
+
+function toggleCompare(type, id) {
+  const existingIndex = compareList.findIndex(c => c.type === type && c.id === id);
+  if (existingIndex >= 0) {
+    compareList.splice(existingIndex, 1);
+    showToast('تمت الإزالة من المقارنة', 'info');
+  } else {
+    if (compareList.length >= 3) {
+      showToast('يمكن مقارنة 3 عناصر كحد أقصى', 'error');
+      return;
+    }
+    let item;
+    if (type === 'product') item = products.find(p => p.id === id);
+    else if (type === 'os') item = osGuides[id];
+    else if (type === 'game') item = games[id];
+    if (item) {
+      compareList.push({ type, id, name: item.name || item.title, image: item.image });
+      showToast('تمت الإضافة للمقارنة', 'success');
+    }
+  }
+  updateCompareBar();
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById('compare-bar');
+  const count = document.getElementById('compare-count');
+  const items = document.getElementById('compare-items');
+  count.textContent = compareList.length;
+
+  if (compareList.length === 0) {
+    bar.classList.remove('open');
+  } else {
+    bar.classList.add('open');
+    items.innerHTML = compareList.map(c => `
+      <div class="flex items-center gap-2 px-3 py-1 rounded-lg border text-sm" style="background:var(--surface);border-color:var(--border);color:var(--text)">
+        <span>${c.image}</span>
+        <span class="truncate max-w-[100px]">${c.name}</span>
+        <button onclick="toggleCompare('${c.type}', ${c.id})" style="color:var(--accent)"><i class="fas fa-times"></i></button>
+      </div>
+    `).join('');
+  }
+}
+
+function clearCompare() {
+  compareList = [];
+  updateCompareBar();
+}
+
+function openCompareModal() {
+  if (compareList.length < 2) {
+    showToast('اختر عنصرين على الأقل للمقارنة', 'error');
+    return;
+  }
+  const content = document.getElementById('compare-modal-content');
+  let html = '<div class="overflow-x-auto"><table class="w-full text-sm" style="color:var(--text)"><thead><tr style="border-bottom:1px solid var(--border)"><th class="text-right p-3">الميزة</th>';
+
+  compareList.forEach(c => {
+    html += `<th class="text-center p-3">${c.image}<br><span class="font-bold">${c.name}</span></th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  // Get full items
+  const items = compareList.map(c => {
+    if (c.type === 'product') return { ...products.find(p => p.id === c.id), type: 'product' };
+    if (c.type === 'os') return { ...osGuides[c.id], type: 'os' };
+    if (c.type === 'game') return { ...games[c.id], type: 'game' };
+    return {};
+  });
+
+  // Compare rows based on type
+  if (items[0].type === 'product') {
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">السعر</td>${items.map(i => `<td class="text-center p-3 font-bold" style="color:var(--primary)">$${i.price}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">التصنيف</td>${items.map(i => `<td class="text-center p-3">${i.category}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">التقييم</td>${items.map(i => `<td class="text-center p-3" style="color:var(--warning)">⭐ ${i.rating}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">البلد</td>${items.map(i => `<td class="text-center p-3">${i.country || '-'}</td>`).join('')}</tr>`;
+  } else if (items[0].type === 'os') {
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">المجاني</td>${items.map(i => `<td class="text-center p-3">${i.free ? '✅' : '❌'}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">الذاكرة المطلوبة</td>${items.map(i => `<td class="text-center p-3">${i.ram}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">التخزين</td>${items.map(i => `<td class="text-center p-3">${i.storage}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">المطور</td>${items.map(i => `<td class="text-center p-3">${i.developer}</td>`).join('')}</tr>`;
+  } else if (items[0].type === 'game') {
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">السعر</td>${items.map(i => `<td class="text-center p-3 font-bold" style="color:var(--primary)">${i.free ? 'مجاني' : '$'+i.price}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">المنصة</td>${items.map(i => `<td class="text-center p-3">${i.platform}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">المطور</td>${items.map(i => `<td class="text-center p-3">${i.developer}</td>`).join('')}</tr>`;
+    html += `<tr style="border-bottom:1px solid var(--border)"><td class="p-3 font-bold" style="color:var(--muted)">النوع</td>${items.map(i => `<td class="text-center p-3">${i.genre}</td>`).join('')}</tr>`;
+  }
+
+  html += '</tbody></table></div>';
+  content.innerHTML = html;
+  document.getElementById('compare-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCompareModal() {
+  document.getElementById('compare-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ==================== SEARCH ====================
+
+function handleSearch(query) {
+  const dropdown = document.getElementById('search-dropdown');
+  if (!query.trim()) {
+    dropdown.classList.remove('open');
+    return;
+  }
+
+  const q = query.toLowerCase();
+  const results = [];
+
+  products.forEach(p => { if (p.name.toLowerCase().includes(q)) results.push({ type: 'منتج', name: p.name, icon: p.image, action: () => { openProductModal(p.id); dropdown.classList.remove('open'); } }); });
+  osGuides.forEach((os, i) => { if (os.name.toLowerCase().includes(q)) results.push({ type: 'نظام', name: os.name, icon: os.image, action: () => { openOSModal(i); dropdown.classList.remove('open'); } }); });
+  games.forEach((g, i) => { if (g.name.toLowerCase().includes(q)) results.push({ type: 'لعبة', name: g.name, icon: g.image, action: () => { openGameModal(i); dropdown.classList.remove('open'); } }); });
+  animeList.forEach((a, i) => { if (a.title.toLowerCase().includes(q)) results.push({ type: 'أنمي', name: a.title, icon: a.image, action: () => { openAnimeModal(i); dropdown.classList.remove('open'); } }); });
+  aiTools.forEach(t => { if (t.name.toLowerCase().includes(q)) results.push({ type: 'AI', name: t.name, icon: t.image, action: () => { scrollToSection('ai'); dropdown.classList.remove('open'); } }); });
+
+  if (results.length === 0) {
+    dropdown.innerHTML = '<div class="p-4 text-center text-sm" style="color:var(--muted)">لا توجد نتائج</div>';
+  } else {
+    dropdown.innerHTML = results.slice(0, 6).map(r => `
+      <div onclick="(${r.action.toString()})()" class="flex items-center gap-3 p-3 cursor-pointer transition-all hover:opacity-80" style="border-bottom:1px solid var(--border)">
+        <span class="text-2xl">${r.icon}</span>
+        <div class="flex-1">
+          <div class="font-bold text-sm" style="color:var(--text)">${r.name}</div>
+          <div class="text-xs" style="color:var(--muted)">${r.type}</div>
+        </div>
+        <i class="fas fa-chevron-left text-xs" style="color:var(--muted)"></i>
+      </div>
+    `).join('');
+  }
+  dropdown.classList.add('open');
+}
+
+// ==================== NOTIFICATIONS ====================
+
+function renderNotifications() {
+  const list = document.getElementById('notifications-list');
+  const unread = notifications.filter(n => !n.read).length;
+  document.getElementById('notif-count').textContent = `(${unread})`;
+  const badge = document.getElementById('notif-badge');
+  if (unread > 0) { badge.textContent = unread; badge.classList.remove('hidden'); }
+  else badge.classList.add('hidden');
+
+  if (notifications.length === 0) {
+    list.innerHTML = '<div class="text-center py-8"><i class="fas fa-bell-slash text-4xl mb-2" style="color:var(--border)"></i><p class="text-sm" style="color:var(--muted)">لا توجد إشعارات</p></div>';
+  } else {
+    list.innerHTML = notifications.map(n => `
+      <div class="rounded-lg p-3 mb-2 border ${n.read ? '' : 'border-primary'}" style="background:var(--surface);border-color:${n.read ? 'var(--border)' : 'var(--primary)'};opacity:${n.read ? '0.7' : '1'}">
+        <div class="flex items-start gap-3">
+          <div class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background:${n.read ? 'var(--border)' : 'var(--primary)'}${n.read ? '' : ';animation:pulse 2s infinite'}"></div>
+          <div class="flex-1">
+            <div class="font-bold text-sm" style="color:var(--text)">${n.title}</div>
+            <div class="text-xs mb-1" style="color:var(--muted)">${n.message}</div>
+            <div class="text-[10px]" style="color:var(--muted)">${n.date}</div>
+          </div>
+          ${!n.read ? `<button onclick="markNotifRead(${n.id})" class="text-xs" style="color:var(--primary)">قراءة</button>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+function markNotifRead(id) {
+  const n = notifications.find(x => x.id === id);
+  if (n) { n.read = true; renderNotifications(); }
+}
+
+function toggleNotifications() {
+  const panel = document.getElementById('notification-panel');
+  const overlay = document.getElementById('notification-overlay');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) {
+    overlay.classList.remove('hidden');
+    renderNotifications();
+  } else {
+    overlay.classList.add('hidden');
+  }
+}
+
+// ==================== THEME & LANGUAGE ====================
+
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById('theme-icon');
+  const current = body.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  body.setAttribute('data-theme', next);
+  icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  localStorage.setItem('theme', next);
+}
+
+function toggleLanguage() {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  showToast(currentLang === 'ar' ? 'تم التبديل للعربية' : 'Switched to English', 'info');
+}
+
+// ==================== UI FUNCTIONS ====================
+
+function toggleCart() {
+  const sidebar = document.getElementById('cart-sidebar');
+  const overlay = document.getElementById('cart-overlay');
+  sidebar.classList.toggle('open');
+  if (sidebar.classList.contains('open')) overlay.classList.remove('hidden');
+  else overlay.classList.add('hidden');
+}
+
+function toggleMobileMenu() {
+  document.getElementById('mobile-drawer').classList.toggle('open');
+}
+
+function openLoginModal() {
+  document.getElementById('login-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+  document.getElementById('login-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function openTicketModal() {
+  document.getElementById('ticket-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTicketModal() {
+  document.getElementById('ticket-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function togglePassword(id) {
+  const input = document.getElementById(id);
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+function login() {
+  closeLoginModal();
+  showToast('تم تسجيل الدخول بنجاح!', 'success');
+}
+
+function submitTicket() {
+  closeTicketModal();
+  showToast('تم إرسال التذكرة بنجاح! سنرد عليك في أقل من 24 ساعة', 'success');
+}
+
+function subscribeNewsletter() {
+  showToast('تم الاشتراك في النشرة البريدية بنجاح!', 'success');
+}
+
+function showToast(message, type) {
+  const toast = document.getElementById('toast');
+  const msg = document.getElementById('toast-message');
+  const icon = document.getElementById('toast-icon');
+  msg.textContent = message;
+  icon.className = type === 'success' ? 'fas fa-check-circle' : type === 'error' ? 'fas fa-times-circle' : 'fas fa-info-circle';
+  icon.style.color = type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--accent)' : 'var(--primary)';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function filterProducts(category) {
+  renderProducts(category);
+  document.querySelectorAll('[data-pfilter]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.pfilter === category);
+  });
+}
+
+function filterAI(category) {
+  renderAI(category);
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === category);
+  });
+}
+
+// ==================== NAVBAR SCROLL ====================
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(26,26,46,0.95)';
+    nav.classList.add('nav-blur');
+    nav.style.borderBottom = '1px solid var(--border)';
+  } else {
+    nav.style.background = 'transparent';
+    nav.classList.remove('nav-blur');
+    nav.style.borderBottom = 'none';
+  }
+});
+
+// ==================== INTERSECTION OBSERVER ====================
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.1 });
+
+// ==================== INITIALIZATION ====================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.body.setAttribute('data-theme', savedTheme);
+  document.getElementById('theme-icon').className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+
+  renderProducts();
+  renderServices();
+  renderOS();
+  renderAI('all');
+  renderGames();
+  renderAnime();
+  renderFreelance();
+  renderNews();
+  renderCommunity();
+  renderNotifications();
+  updateCartUI();
+  updateCompareBar();
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+
+  // Close modals on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProductModal(); closeOSModal(); closeGameModal(); closeAnimeModal();
+      closeCompareModal(); closeLoginModal(); closeTicketModal();
+      document.getElementById('cart-sidebar').classList.remove('open');
+      document.getElementById('cart-overlay').classList.add('hidden');
+      document.getElementById('notification-panel').classList.remove('open');
+      document.getElementById('notification-overlay').classList.add('hidden');
+      document.getElementById('mobile-drawer').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close search on click outside
+  document.addEventListener('click', (e) => {
+    const searchContainer = document.querySelector('.relative.hidden.md:block');
+    if (searchContainer && !searchContainer.contains(e.target)) {
+      document.getElementById('search-dropdown').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
