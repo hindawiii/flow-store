@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { CartSidebar } from "@/components/souq/CartSidebar";
 import { Categories } from "@/components/souq/Categories";
+import { CompareBar } from "@/components/souq/CompareBar";
 import { Footer } from "@/components/souq/Footer";
 import { Hero } from "@/components/souq/Hero";
 import { Navbar } from "@/components/souq/Navbar";
 import { Newsletter } from "@/components/souq/Newsletter";
+import { Store } from "@/components/souq/Store";
+import { Toaster } from "@/components/ui/sonner";
+import { StoreProvider } from "@/lib/souq/store-context";
 
 export const Route = createFileRoute("/")({
   head: () => ({
