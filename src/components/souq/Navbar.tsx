@@ -98,15 +98,18 @@ function IconButton({
   children,
   label,
   badge,
+  onClick,
 }: {
   children: React.ReactNode;
   label: string;
   badge?: string;
+  onClick?: () => void;
 }) {
   return (
     <button
       type="button"
       aria-label={label}
+      onClick={onClick}
       className="relative inline-flex size-10 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
     >
       {children}
