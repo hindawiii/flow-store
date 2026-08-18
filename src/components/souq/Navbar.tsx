@@ -49,7 +49,11 @@ export function Navbar() {
           <IconButton label="الإشعارات" badge="3">
             <Bell className="size-5" />
           </IconButton>
-          <IconButton label="السلة" badge="0">
+          <IconButton
+            label="السلة"
+            badge={String(cartCount)}
+            onClick={() => setCartOpen(true)}
+          >
             <ShoppingCart className="size-5" />
           </IconButton>
           <button
