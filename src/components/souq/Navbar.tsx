@@ -3,11 +3,13 @@ import { Bell, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 
 import { Logo } from "./Logo";
 import { NAV_LINKS } from "@/lib/souq/navigation";
+import { useStore } from "@/lib/souq/store-context";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { cartCount, setCartOpen } = useStore();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
