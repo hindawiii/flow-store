@@ -3,11 +3,13 @@ import { Bell, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 
 import { Logo } from "./Logo";
 import { NAV_LINKS } from "@/lib/souq/navigation";
+import { useStore } from "@/lib/souq/store-context";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { cartCount, setCartOpen } = useStore();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -47,7 +49,11 @@ export function Navbar() {
           <IconButton label="الإشعارات" badge="3">
             <Bell className="size-5" />
           </IconButton>
-          <IconButton label="السلة" badge="0">
+          <IconButton
+            label="السلة"
+            badge={String(cartCount)}
+            onClick={() => setCartOpen(true)}
+          >
             <ShoppingCart className="size-5" />
           </IconButton>
           <button
@@ -92,15 +98,18 @@ function IconButton({
   children,
   label,
   badge,
+  onClick,
 }: {
   children: React.ReactNode;
   label: string;
   badge?: string;
+  onClick?: () => void;
 }) {
   return (
     <button
       type="button"
       aria-label={label}
+      onClick={onClick}
       className="relative inline-flex size-10 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
     >
       {children}
