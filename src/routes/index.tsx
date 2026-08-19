@@ -44,6 +44,8 @@ function Index() {
           <Hero />
           <Categories />
           <Store />
+          <Services />
+          <OsGuides />
           <Newsletter />
         </main>
         <Footer />
