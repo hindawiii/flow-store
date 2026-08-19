@@ -7,6 +7,8 @@ import { Footer } from "@/components/souq/Footer";
 import { Hero } from "@/components/souq/Hero";
 import { Navbar } from "@/components/souq/Navbar";
 import { Newsletter } from "@/components/souq/Newsletter";
+import { OsGuides } from "@/components/souq/OsGuides";
+import { Services } from "@/components/souq/Services";
 import { Store } from "@/components/souq/Store";
 import { Toaster } from "@/components/ui/sonner";
 import { StoreProvider } from "@/lib/souq/store-context";
