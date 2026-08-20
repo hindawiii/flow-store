@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { AiTools } from "@/components/souq/AiTools";
+import { Anime } from "@/components/souq/Anime";
 import { CartSidebar } from "@/components/souq/CartSidebar";
 import { Categories } from "@/components/souq/Categories";
 import { CompareBar } from "@/components/souq/CompareBar";
 import { Footer } from "@/components/souq/Footer";
+import { Games } from "@/components/souq/Games";
 import { Hero } from "@/components/souq/Hero";
 import { Navbar } from "@/components/souq/Navbar";
 import { Newsletter } from "@/components/souq/Newsletter";
@@ -46,8 +49,13 @@ function Index() {
           <Store />
           <Services />
           <OsGuides />
+          <AiTools />
+          <Games />
+          <Anime />
           <Newsletter />
         </main>
+
+
         <Footer />
         <CartSidebar />
         <CompareBar />
