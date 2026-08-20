@@ -49,8 +49,11 @@ function Index() {
           <Store />
           <Services />
           <OsGuides />
+          <AiTools />
+          <Games />
+          <Anime />
           <Newsletter />
-        </main>
+
         <Footer />
         <CartSidebar />
         <CompareBar />
