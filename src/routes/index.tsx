@@ -53,6 +53,8 @@ function Index() {
           <Games />
           <Anime />
           <Newsletter />
+        </main>
+
 
         <Footer />
         <CartSidebar />
