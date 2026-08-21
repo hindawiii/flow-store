@@ -8,5 +8,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "الألعاب", href: "#games" },
   { label: "الأنمي", href: "#anime" },
   { label: "المجتمع", href: "#community" },
+  { label: "العمل الحر", href: "#freelance" },
+  { label: "الأخبار", href: "#news" },
   { label: "الدعم", href: "#support" },
 ];
