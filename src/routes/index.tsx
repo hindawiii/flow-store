@@ -4,10 +4,13 @@ import { AiTools } from "@/components/souq/AiTools";
 import { Anime } from "@/components/souq/Anime";
 import { CartSidebar } from "@/components/souq/CartSidebar";
 import { Categories } from "@/components/souq/Categories";
+import { Community } from "@/components/souq/Community";
 import { CompareBar } from "@/components/souq/CompareBar";
 import { Footer } from "@/components/souq/Footer";
+import { Freelance } from "@/components/souq/Freelance";
 import { Games } from "@/components/souq/Games";
 import { Hero } from "@/components/souq/Hero";
+import { News } from "@/components/souq/News";
 import { Navbar } from "@/components/souq/Navbar";
 import { Newsletter } from "@/components/souq/Newsletter";
 import { OsGuides } from "@/components/souq/OsGuides";
@@ -52,6 +55,9 @@ function Index() {
           <AiTools />
           <Games />
           <Anime />
+          <Community />
+          <Freelance />
+          <News />
           <Newsletter />
         </main>
 
