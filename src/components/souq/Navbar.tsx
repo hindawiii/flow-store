@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { Bell, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 
+import { AuthModal } from "./AuthModal";
 import { Logo } from "./Logo";
+import { NotificationsPanel } from "./NotificationsPanel";
 import { NAV_LINKS } from "@/lib/souq/navigation";
+import { NOTIFICATIONS, type Notification } from "@/lib/souq/notifications";
 import { useStore } from "@/lib/souq/store-context";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [notifications, setNotifications] = useState<Notification[]>(NOTIFICATIONS);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const { cartCount, setCartOpen } = useStore();
+  const unread = notifications.filter((n) => !n.read).length;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
