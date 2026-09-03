@@ -55,7 +55,7 @@ export function Navbar() {
           </IconButton>
           <IconButton
             label="الإشعارات"
-            badge={unread > 0 ? String(unread) : undefined}
+            badge={unread > 0 ? String(unread) : ""}
             onClick={() => setNotifOpen(true)}
           >
             <Bell className="size-5" />
@@ -139,7 +139,7 @@ function IconButton({
 }: {
   children: React.ReactNode;
   label: string;
-  badge?: string;
+  badge?: string | undefined;
   onClick?: () => void;
 }) {
   return (
