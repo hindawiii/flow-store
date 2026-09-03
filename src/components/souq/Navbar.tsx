@@ -100,8 +100,33 @@ export function Navbar() {
               </a>
             ))}
           </nav>
+          <div className="mx-auto max-w-7xl px-4 pb-4">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setAuthOpen(true);
+              }}
+              className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground"
+            >
+              تسجيل الدخول
+            </button>
+          </div>
         </div>
       )}
+
+      {notifOpen && (
+        <NotificationsPanel
+          items={notifications}
+          onClose={() => setNotifOpen(false)}
+          onRead={(id) =>
+            setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
+          }
+          onReadAll={() => setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))}
+        />
+      )}
+
+      {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
     </header>
   );
 }
