@@ -53,7 +53,11 @@ export function Navbar() {
           <IconButton label="بحث">
             <Search className="size-5" />
           </IconButton>
-          <IconButton label="الإشعارات" badge="3">
+          <IconButton
+            label="الإشعارات"
+            badge={unread > 0 ? String(unread) : ""}
+            onClick={() => setNotifOpen(true)}
+          >
             <Bell className="size-5" />
           </IconButton>
           <IconButton
@@ -65,6 +69,7 @@ export function Navbar() {
           </IconButton>
           <button
             type="button"
+            onClick={() => setAuthOpen(true)}
             className="hidden items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
           >
             <User className="size-4" />
@@ -95,8 +100,33 @@ export function Navbar() {
               </a>
             ))}
           </nav>
+          <div className="mx-auto max-w-7xl px-4 pb-4">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setAuthOpen(true);
+              }}
+              className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground"
+            >
+              تسجيل الدخول
+            </button>
+          </div>
         </div>
       )}
+
+      {notifOpen && (
+        <NotificationsPanel
+          items={notifications}
+          onClose={() => setNotifOpen(false)}
+          onRead={(id) =>
+            setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
+          }
+          onReadAll={() => setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))}
+        />
+      )}
+
+      {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
     </header>
   );
 }
@@ -109,7 +139,7 @@ function IconButton({
 }: {
   children: React.ReactNode;
   label: string;
-  badge?: string;
+  badge?: string | undefined;
   onClick?: () => void;
 }) {
   return (
