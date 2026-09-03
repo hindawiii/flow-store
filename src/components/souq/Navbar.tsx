@@ -53,7 +53,11 @@ export function Navbar() {
           <IconButton label="بحث">
             <Search className="size-5" />
           </IconButton>
-          <IconButton label="الإشعارات" badge="3">
+          <IconButton
+            label="الإشعارات"
+            badge={unread > 0 ? String(unread) : undefined}
+            onClick={() => setNotifOpen(true)}
+          >
             <Bell className="size-5" />
           </IconButton>
           <IconButton
