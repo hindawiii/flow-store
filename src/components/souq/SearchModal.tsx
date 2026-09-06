@@ -35,7 +35,7 @@ const INDEX: Result[] = [
     label: t.name,
     kind: "أداة AI",
     emoji: t.image,
-    href: "#ai-tools",
+    href: "#ai",
   })),
 ];
 
