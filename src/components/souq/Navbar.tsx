@@ -54,9 +54,10 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <IconButton label="بحث">
+          <IconButton label="بحث" onClick={() => setSearchOpen(true)}>
             <Search className="size-5" />
           </IconButton>
+
           <IconButton
             label="الإشعارات"
             badge={unread > 0 ? String(unread) : ""}
