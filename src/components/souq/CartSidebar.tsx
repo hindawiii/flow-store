@@ -88,7 +88,7 @@ export function CartSidebar() {
             </div>
             <button
               type="button"
-              onClick={() => toast.info("سيتم توجيهك لصفحة الدفع قريباً")}
+              onClick={() => setCheckoutOpen(true)}
               className="w-full rounded-lg bg-primary px-4 py-3 font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
               إتمام الشراء
@@ -96,9 +96,12 @@ export function CartSidebar() {
           </div>
         )}
       </aside>
+
+      {checkoutOpen && <CheckoutModal onClose={() => setCheckoutOpen(false)} />}
     </>
   );
 }
+
 
 function QtyBtn({
   children,
