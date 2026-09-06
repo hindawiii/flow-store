@@ -17,7 +17,9 @@ export function Navbar() {
   const [notifications, setNotifications] = useState<Notification[]>(NOTIFICATIONS);
   const [notifOpen, setNotifOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { cartCount, setCartOpen } = useStore();
+
   const unread = notifications.filter((n) => !n.read).length;
 
   useEffect(() => {
