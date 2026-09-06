@@ -132,6 +132,8 @@ export function Navbar() {
       )}
 
       {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
+      {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
+
     </header>
   );
 }
