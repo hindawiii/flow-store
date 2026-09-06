@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
-import { toast } from "sonner";
 
+import { CheckoutModal } from "./CheckoutModal";
 import { useStore } from "@/lib/souq/store-context";
 
 export function CartSidebar() {
   const { cart, cartOpen, setCartOpen, cartTotal, setQty, removeFromCart, productById } =
     useStore();
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   if (!cartOpen) return null;
+
 
   return (
     <>
