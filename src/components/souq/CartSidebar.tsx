@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
-import { toast } from "sonner";
 
+import { CheckoutModal } from "./CheckoutModal";
 import { useStore } from "@/lib/souq/store-context";
 
 export function CartSidebar() {
   const { cart, cartOpen, setCartOpen, cartTotal, setQty, removeFromCart, productById } =
     useStore();
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   if (!cartOpen) return null;
+
 
   return (
     <>
@@ -85,7 +88,7 @@ export function CartSidebar() {
             </div>
             <button
               type="button"
-              onClick={() => toast.info("سيتم توجيهك لصفحة الدفع قريباً")}
+              onClick={() => setCheckoutOpen(true)}
               className="w-full rounded-lg bg-primary px-4 py-3 font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
               إتمام الشراء
@@ -93,9 +96,12 @@ export function CartSidebar() {
           </div>
         )}
       </aside>
+
+      {checkoutOpen && <CheckoutModal onClose={() => setCheckoutOpen(false)} />}
     </>
   );
 }
+
 
 function QtyBtn({
   children,

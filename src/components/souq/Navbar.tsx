@@ -4,6 +4,8 @@ import { Bell, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { AuthModal } from "./AuthModal";
 import { Logo } from "./Logo";
 import { NotificationsPanel } from "./NotificationsPanel";
+import { SearchModal } from "./SearchModal";
+
 import { NAV_LINKS } from "@/lib/souq/navigation";
 import { NOTIFICATIONS, type Notification } from "@/lib/souq/notifications";
 import { useStore } from "@/lib/souq/store-context";
@@ -15,7 +17,9 @@ export function Navbar() {
   const [notifications, setNotifications] = useState<Notification[]>(NOTIFICATIONS);
   const [notifOpen, setNotifOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { cartCount, setCartOpen } = useStore();
+
   const unread = notifications.filter((n) => !n.read).length;
 
   useEffect(() => {
@@ -50,9 +54,10 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <IconButton label="بحث">
+          <IconButton label="بحث" onClick={() => setSearchOpen(true)}>
             <Search className="size-5" />
           </IconButton>
+
           <IconButton
             label="الإشعارات"
             badge={unread > 0 ? String(unread) : ""}
@@ -127,6 +132,8 @@ export function Navbar() {
       )}
 
       {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
+      {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
+
     </header>
   );
 }
