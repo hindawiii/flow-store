@@ -1,8 +1,10 @@
 import { ExternalLink, X } from "lucide-react";
 
 import type { OsGuide, OsReqSet } from "@/lib/souq/os-guides";
+import { useOverlay } from "@/hooks/use-overlay";
 
 export function OsModal({ os, onClose }: { os: OsGuide | null; onClose: () => void }) {
+  useOverlay(onClose, Boolean(os));
   if (!os) return null;
 
   return (

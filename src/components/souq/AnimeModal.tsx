@@ -1,8 +1,10 @@
 import { AlertTriangle, ExternalLink, X } from "lucide-react";
 
 import type { Anime } from "@/lib/souq/anime";
+import { useOverlay } from "@/hooks/use-overlay";
 
 export function AnimeModal({ anime, onClose }: { anime: Anime | null; onClose: () => void }) {
+  useOverlay(onClose, Boolean(anime));
   if (!anime) return null;
 
   return (
