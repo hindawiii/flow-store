@@ -5,6 +5,7 @@ import { AI_TOOLS } from "@/lib/souq/ai-tools";
 import { ANIME } from "@/lib/souq/anime";
 import { GAMES } from "@/lib/souq/games";
 import { PRODUCTS } from "@/lib/souq/products";
+import { useOverlay } from "@/hooks/use-overlay";
 
 type Result = { key: string; label: string; kind: string; emoji: string; href: string };
 
@@ -40,6 +41,7 @@ const INDEX: Result[] = [
 ];
 
 export function SearchModal({ onClose }: { onClose: () => void }) {
+  useOverlay(onClose);
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {

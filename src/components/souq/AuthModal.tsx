@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff, X } from "lucide-react";
 import { toast } from "sonner";
+import { useOverlay } from "@/hooks/use-overlay";
 
 type Mode = "login" | "signup";
 
@@ -8,6 +9,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
   const [showPassword, setShowPassword] = useState(false);
   const [mode, setMode] = useState<Mode>("login");
   const isSignup = mode === "signup";
+  useOverlay(onClose);
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center overflow-y-auto bg-black/60 p-4">

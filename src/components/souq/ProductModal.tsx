@@ -2,6 +2,7 @@ import { Check, ExternalLink, ShoppingCart, Star, X } from "lucide-react";
 
 import type { Product } from "@/lib/souq/products";
 import { useStore } from "@/lib/souq/store-context";
+import { useOverlay } from "@/hooks/use-overlay";
 
 export function ProductModal({
   product,
@@ -11,6 +12,7 @@ export function ProductModal({
   onClose: () => void;
 }) {
   const { addToCart } = useStore();
+  useOverlay(onClose, Boolean(product));
   if (!product) return null;
 
   return (

@@ -1,6 +1,7 @@
 import { BellOff, Check, X } from "lucide-react";
 
 import type { Notification } from "@/lib/souq/notifications";
+import { useOverlay } from "@/hooks/use-overlay";
 
 const TYPE_STYLES: Record<Notification["type"], string> = {
   offer: "bg-primary/10 text-primary",
@@ -25,6 +26,7 @@ export function NotificationsPanel({
   onRead: (id: number) => void;
   onReadAll: () => void;
 }) {
+  useOverlay(onClose);
   return (
     <>
       <div className="fixed inset-0 z-[70] bg-black/60" onClick={onClose} />

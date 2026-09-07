@@ -3,6 +3,7 @@ import { CheckCircle2, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { useStore } from "@/lib/souq/store-context";
+import { useOverlay } from "@/hooks/use-overlay";
 
 const PAYMENTS = [
   { value: "cod", label: "الدفع عند الاستلام" },
@@ -15,6 +16,7 @@ const SHIPPING = 5;
 export function CheckoutModal({ onClose }: { onClose: () => void }) {
   const { cart, cartTotal, productById, clearCart, setCartOpen } = useStore();
   const [done, setDone] = useState<string | null>(null);
+  useOverlay(onClose);
 
   const total = cartTotal + (cart.length > 0 ? SHIPPING : 0);
 

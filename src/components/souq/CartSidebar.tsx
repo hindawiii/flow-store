@@ -3,11 +3,13 @@ import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 
 import { CheckoutModal } from "./CheckoutModal";
 import { useStore } from "@/lib/souq/store-context";
+import { useOverlay } from "@/hooks/use-overlay";
 
 export function CartSidebar() {
   const { cart, cartOpen, setCartOpen, cartTotal, setQty, removeFromCart, productById } =
     useStore();
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  useOverlay(() => setCartOpen(false), cartOpen);
 
   if (!cartOpen) return null;
 

@@ -1,8 +1,10 @@
 import { ExternalLink, X } from "lucide-react";
 
 import type { Game, GameReq } from "@/lib/souq/games";
+import { useOverlay } from "@/hooks/use-overlay";
 
 export function GameModal({ game, onClose }: { game: Game | null; onClose: () => void }) {
+  useOverlay(onClose, Boolean(game));
   if (!game) return null;
 
   return (

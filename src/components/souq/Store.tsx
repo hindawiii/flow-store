@@ -5,7 +5,7 @@ import { ProductModal } from "./ProductModal";
 import { PRODUCTS, type Product } from "@/lib/souq/products";
 import { cn } from "@/lib/utils";
 
-const FILTERS = ["الكل", "مجسمات", "ملابس", "بوسترات", "تقنية", "ألعاب"] as const;
+const FILTERS = ["الكل", "مجسمات", "ملابس", "بوسترات", "تقنية", "ألعاب", "إكسسوارات"] as const;
 
 export function Store() {
   const [filter, setFilter] = useState<string>("الكل");
