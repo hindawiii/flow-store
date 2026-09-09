@@ -1,26 +1,18 @@
+import { useState } from "react";
 import { Clock, Star, Users } from "lucide-react";
-import { toast } from "sonner";
 
-import { SERVICES } from "@/lib/souq/services";
+import { BookingModal } from "./BookingModal";
+import { SERVICES, type Service } from "@/lib/souq/services";
 
 export function Services() {
+  const [booking, setBooking] = useState<Service | null>(null);
+
   return (
     <section id="services" className="scroll-mt-24 bg-card/30 py-20">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-          <div>
-            <h2 className="mb-2 text-3xl font-black text-foreground">خدماتنا التقنية</h2>
-            <p className="text-muted-foreground">
-              دعم فني عن بُعد، صيانة، وبرمجة بالذكاء الاصطناعي
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => toast.info("سيتم فتح صفحة الخدمات الكاملة قريباً")}
-            className="hidden rounded-lg border border-border px-4 py-2 text-sm font-bold text-muted-foreground transition-colors hover:border-primary hover:text-primary md:block"
-          >
-            عرض الكل
-          </button>
+        <div className="mb-8">
+          <h2 className="mb-2 text-3xl font-black text-foreground">خدماتنا التقنية</h2>
+          <p className="text-muted-foreground">دعم فني عن بُعد، صيانة، وبرمجة بالذكاء الاصطناعي</p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -58,7 +50,7 @@ export function Services() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => toast.info("سيتم فتح صفحة الحجز قريباً")}
+                    onClick={() => setBooking(s)}
                     className="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
                   >
                     احجز الآن
@@ -69,6 +61,8 @@ export function Services() {
           ))}
         </div>
       </div>
+
+      {booking && <BookingModal service={booking} onClose={() => setBooking(null)} />}
     </section>
   );
 }
