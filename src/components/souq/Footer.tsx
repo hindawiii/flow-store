@@ -1,4 +1,5 @@
-import { Instagram, Send, Twitter, Youtube } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Mail, MessageCircle } from "lucide-react";
 
 import { Logo } from "./Logo";
 
@@ -10,17 +11,10 @@ const QUICK = [
 ];
 
 const SERVICES = [
-  "دعم فني عن بُعد",
-  "صيانة ويندوز",
-  "برمجة بالذكاء الاصطناعي",
-  "تثبيت أنظمة التشغيل",
-];
-
-const SOCIAL = [
-  { icon: Instagram, label: "إنستغرام" },
-  { icon: Twitter, label: "تويتر" },
-  { icon: Send, label: "تيليجرام" },
-  { icon: Youtube, label: "يوتيوب" },
+  { label: "دعم فني عن بُعد", href: "#services" },
+  { label: "صيانة ويندوز", href: "#services" },
+  { label: "برمجة بالذكاء الاصطناعي", href: "#services" },
+  { label: "تثبيت أنظمة التشغيل", href: "#os" },
 ];
 
 export function Footer() {
@@ -55,9 +49,9 @@ export function Footer() {
             <h3 className="mb-4 font-bold text-foreground">خدمات</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {SERVICES.map((item) => (
-                <li key={item}>
-                  <a href="#services" className="transition-colors hover:text-primary">
-                    {item}
+                <li key={item.label}>
+                  <a href={item.href} className="transition-colors hover:text-primary">
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -66,30 +60,36 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 font-bold text-foreground">تواصل معنا</h3>
-            <div className="flex gap-3">
-              {SOCIAL.map(({ icon: Icon, label }) => (
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>
                 <a
-                  key={label}
-                  href="#top"
-                  aria-label={label}
-                  className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                  href="#support"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-primary"
                 >
-                  <Icon className="size-4" />
+                  <MessageCircle className="size-4" /> افتح تذكرة دعم
                 </a>
-              ))}
-            </div>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@souqbyte.com"
+                  className="font-latin inline-flex items-center gap-2 transition-colors hover:text-primary"
+                >
+                  <Mail className="size-4" /> support@souqbyte.com
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">© 2026 سوق بايت — جميع الحقوق محفوظة</p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#top" className="transition-colors hover:text-primary">
+            <Link to="/privacy" className="transition-colors hover:text-primary">
               سياسة الخصوصية
-            </a>
-            <a href="#top" className="transition-colors hover:text-primary">
+            </Link>
+            <Link to="/terms" className="transition-colors hover:text-primary">
               شروط الاستخدام
-            </a>
+            </Link>
           </div>
         </div>
       </div>
