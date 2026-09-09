@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ArrowLeftRight } from "lucide-react";
-import { toast } from "sonner";
 
+import { OsCompareModal } from "./OsCompareModal";
 import { OsModal } from "./OsModal";
 import { OS_GUIDES, type OsGuide } from "@/lib/souq/os-guides";
 
 export function OsGuides() {
   const [active, setActive] = useState<OsGuide | null>(null);
+  const [compareOpen, setCompareOpen] = useState(false);
 
   return (
     <section id="os" className="scroll-mt-24 py-20">
@@ -20,7 +21,7 @@ export function OsGuides() {
           </div>
           <button
             type="button"
-            onClick={() => toast.info("سيتم فتح أداة المقارنة قريباً")}
+            onClick={() => setCompareOpen(true)}
             className="hidden items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-bold text-muted-foreground transition-colors hover:border-primary hover:text-primary md:flex"
           >
             <ArrowLeftRight className="size-4" /> مقارنة
@@ -70,6 +71,7 @@ export function OsGuides() {
       </div>
 
       <OsModal os={active} onClose={() => setActive(null)} />
+      {compareOpen && <OsCompareModal onClose={() => setCompareOpen(false)} />}
     </section>
   );
 }
