@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Heart, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
+import { usePersistedState } from "@/hooks/use-persisted-state";
 import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_POSTS,
@@ -10,9 +11,12 @@ import {
 import { cn } from "@/lib/utils";
 
 export function Community() {
-  const [posts, setPosts] = useState<CommunityPost[]>(COMMUNITY_POSTS);
+  const [posts, setPosts] = usePersistedState<CommunityPost[]>(
+    "souqbyte:posts",
+    COMMUNITY_POSTS,
+  );
   const [filter, setFilter] = useState<string>("الكل");
-  const [liked, setLiked] = useState<number[]>([]);
+  const [liked, setLiked] = usePersistedState<number[]>("souqbyte:liked", []);
   const [openComments, setOpenComments] = useState<number[]>([]);
   const [form, setForm] = useState({ title: "", category: "", content: "" });
 
