@@ -24,6 +24,7 @@ type StoreState = {
 const StoreContext = createContext<StoreState | null>(null);
 
 const CART_KEY = "souqbyte:cart";
+const COMPARE_KEY = "souqbyte:compare";
 
 export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartLine[]>([]);
@@ -33,7 +34,20 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(CART_KEY);
-      if (raw) setCart(JSON.parse(raw) as CartLine[]);
+      if (raw) {
+        const lines = (JSON.parse(raw) as CartLine[]).filter((l) =>
+          PRODUCTS.some((p) => p.id === l.productId),
+        );
+        setCart(lines);
+      }
+      const rawCompare = window.localStorage.getItem(COMPARE_KEY);
+      if (rawCompare) {
+        setCompare(
+          (JSON.parse(rawCompare) as number[]).filter((id) =>
+            PRODUCTS.some((p) => p.id === id),
+          ),
+        );
+      }
     } catch {
       /* ignore */
     }
@@ -42,10 +56,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       window.localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      window.localStorage.setItem(COMPARE_KEY, JSON.stringify(compare));
     } catch {
       /* ignore */
     }
-  }, [cart]);
+  }, [cart, compare]);
 
   const productById = useCallback((id: number) => PRODUCTS.find((p) => p.id === id), []);
 

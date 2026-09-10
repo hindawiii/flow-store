@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 import { NotificationsPanel } from "./NotificationsPanel";
 import { SearchModal } from "./SearchModal";
 
+import { usePersistedState } from "@/hooks/use-persisted-state";
 import { NAV_LINKS } from "@/lib/souq/navigation";
 import { NOTIFICATIONS, type Notification } from "@/lib/souq/notifications";
 import { useStore } from "@/lib/souq/store-context";
@@ -14,7 +15,10 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [notifications, setNotifications] = useState<Notification[]>(NOTIFICATIONS);
+  const [notifications, setNotifications] = usePersistedState<Notification[]>(
+    "souqbyte:notifications",
+    NOTIFICATIONS,
+  );
   const [notifOpen, setNotifOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);

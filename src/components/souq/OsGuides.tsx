@@ -24,7 +24,7 @@ export function OsGuides() {
             onClick={() => setCompareOpen(true)}
             className="hidden items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-bold text-muted-foreground transition-colors hover:border-primary hover:text-primary md:flex"
           >
-            <ArrowLeftRight className="size-4" /> مقارنة
+            <ArrowLeftRight className="size-4" /> مقارنة الأنظمة
           </button>
         </div>
 
